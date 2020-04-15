@@ -4,6 +4,6 @@ package com.github.johnmedlockdev.main;
 
 class Main {
     public static void main(String[] args) {
-
+        
     }
 }
