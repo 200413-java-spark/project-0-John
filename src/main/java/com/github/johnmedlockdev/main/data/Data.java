@@ -36,5 +36,5 @@ public class Data {
 }
 
 // create method to store data on json or csv
-// create method to make calculate rsi
+// create method to make calculate 200 day moving avg
 // create method to decide wether to make trade or not to make trades
