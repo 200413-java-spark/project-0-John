@@ -18,6 +18,7 @@ public class Data {
 
     int total;
     int count;
+    double sum;
 
     // constructors
     public Data(String ticker, double price, String fileFullName) {
@@ -51,25 +52,35 @@ public class Data {
             }
 
             // defines len of range
-            String[] range = new String[total];
+            String[] strRange = new String[total];
 
-            // creates array of string values
+            // creates array of string values and parses extra "
             br = new BufferedReader(new FileReader(fileFullName));
             while ((line = br.readLine()) != null) {
 
-                range[count] = line.replace("\"", "");
+                strRange[count] = line.replace("\"", "");
                 count++;
 
             }
 
-            // prints range
-            System.out.println(Arrays.toString(range));
-
-            int[] arr = new int[range.length];
-            for (int i = 0; i < range.length; i++) {
-                arr[i] = Integer.parseInt(range[i]);
+            // parses str value to int
+            int[] intRange = new int[strRange.length];
+            for (int i = 0; i < strRange.length; i++) {
+                intRange[i] = Integer.parseInt(strRange[i]);
             }
-            System.out.println(Arrays.toString(arr));
+            System.out.println(Arrays.toString(intRange));
+            sum = 0;
+            for (int i = 0; i < intRange.length; i++) {
+                sum += intRange[i];
+            }
+
+            double average = sum / total;
+
+            if (average > intRange[count - 1]) {
+                return "You're in a bull market, you should Buy.";
+            } else {
+                return "You're in a bear market, you should not buy";
+            }
 
             // error handling for buffers
         } catch (FileNotFoundException e) {

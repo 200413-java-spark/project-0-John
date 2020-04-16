@@ -4,6 +4,8 @@
 
 ### Added
 
+- added getPrediction: It give you a buy or sell signal based off the data in the csv file. According to the market conditions you fed it.
+
 ### Changed
 
 - run.sh consolidated scripts to single file
