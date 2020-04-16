@@ -1,14 +1,6 @@
 package com.github.johnmedlockdev.main;
 
-import java.io.BufferedReader;
-import java.io.File;
-import java.io.FileInputStream;
-import java.io.FileNotFoundException;
-import java.io.FileOutputStream;
-import java.io.FileWriter;
 import java.io.IOException;
-import java.io.InputStreamReader;
-import java.io.OutputStream;
 
 import com.github.johnmedlockdev.main.data.Data;
 
@@ -25,7 +17,7 @@ class Main {
         String fileFullName = staticPath + ticker + ".csv";
 
         // create instance
-        Data asset = new Data(ticker, price);
+        Data asset = new Data(ticker, price, fileFullName);
 
         // control flow for based off user operation selection
         if (method.equals("input")) {
@@ -39,18 +31,18 @@ class Main {
         /// ------------------------------------------------
 
         // need to figure out how to make paths dynamic
-        File path = new File(fileFullName);
+        // File path = new File(fileFullName);
 
-        System.out.println("we got a file: " + path);
-        System.out.println("Does it exist " + path.exists());
-        System.out.println("What? " + path.isDirectory());
+        // System.out.println("we got a file: " + path);
+        // System.out.println("Does it exist " + path.exists());
+        // System.out.println("What? " + path.isDirectory());
 
-        String contentsToWrite = "Hello World";
+        // String contentsToWrite = "Hello World";
 
         // how to write a file
-        OutputStream outputStream = new FileOutputStream(path);
-        outputStream.write(contentsToWrite.getBytes());
-        outputStream.close();
+        // OutputStream outputStream = new FileOutputStream(path);
+        // outputStream.write(contentsToWrite.getBytes());
+        // outputStream.close();
 
         // how to read a file
         // BufferedReader reader = new BufferedReader(new InputStreamReader(new
@@ -58,6 +50,7 @@ class Main {
         // String firstLine = reader.readLine();
         // reader.close();
         // System.out.println("read a line:" + firstLine);
+
     }
 }
 

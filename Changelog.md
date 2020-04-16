@@ -1,5 +1,19 @@
 # Changelog
 
+## Version 0.0.2
+
+### Added
+
+### Changed
+
+- run.sh consolidated scripts to single file
+- pom.xml changed to reflect version changes.
+
+### Removed
+
+- build.sh
+- clean.sh
+
 ## Version 0.0.1
 
 ### Added
