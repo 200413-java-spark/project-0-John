@@ -57,7 +57,7 @@ public class Data {
             br = new BufferedReader(new FileReader(fileFullName));
             while ((line = br.readLine()) != null) {
 
-                range[count] = line;
+                range[count] = line.replace("\"", "");
                 count++;
 
             }
@@ -65,11 +65,11 @@ public class Data {
             // prints range
             System.out.println(Arrays.toString(range));
 
-            // int[] arr = new int[range.length];
-            // for (int i = 0; i < range.length; i++) {
-            // arr[i] = Integer.parseInt(range[i]);
-            // }
-            // System.out.println(arr);
+            int[] arr = new int[range.length];
+            for (int i = 0; i < range.length; i++) {
+                arr[i] = Integer.parseInt(range[i]);
+            }
+            System.out.println(Arrays.toString(arr));
 
             // error handling for buffers
         } catch (FileNotFoundException e) {
