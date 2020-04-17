@@ -1,10 +1,21 @@
 # Changelog
+## Version 0.1.0
+
+### Added
+
+- Placeholder data generation: input generate followed by ticker, and it generates 200 data points.
+- Control flow for file generation.
+
+### Changed
+
+getPrediction(): refactored code to be less loopy.
+
 
 ## Version 0.0.2
 
 ### Added
 
-- added getPrediction: It give you a buy or sell signal based off the data in the csv file. According to the market conditions you fed it.
+- added getPrediction: It gives you a buy or sell signal based off the data in the csv file. According to the market conditions you fed it.
 
 ### Changed
 
@@ -21,7 +32,7 @@
 ### Added
 
 - implemented feature for file name creation based on ticker input.
-- created scripts: build, clean, run (sh) to speed up developement
+- created scripts: build, clean, run (sh) to speed up development
 - Setup inital Maven environment
 
 ### Changed

@@ -48,6 +48,7 @@ public class Data {
             // gets number of lines in file
             br = new BufferedReader(new FileReader(fileFullName));
             while ((line = br.readLine()) != null) {
+
                 total++;
             }
 
@@ -58,33 +59,31 @@ public class Data {
             br = new BufferedReader(new FileReader(fileFullName));
             while ((line = br.readLine()) != null) {
 
-                strRange[count] = line.replace("\"", "");
+                strRange[count] = line;
                 count++;
 
             }
+//            Parses String array to double array.
+            double[] doubleValues = Arrays.stream(strRange)
+                    .mapToDouble(Double::parseDouble)
+                    .toArray();
 
-            // parses str value to int
-            int[] intRange = new int[strRange.length];
-            for (int i = 0; i < strRange.length; i++) {
-                intRange[i] = Integer.parseInt(strRange[i]);
-            }
-            System.out.println(Arrays.toString(intRange));
             sum = 0;
-            for (int i = 0; i < intRange.length; i++) {
-                sum += intRange[i];
+            for (double doubleValue : doubleValues) {
+                sum += doubleValue;
             }
 
+//            where the moving average is.
             double average = sum / total;
 
-            if (average > intRange[count - 1]) {
+//
+            if (average > doubleValues[count - 1]) {
                 return "You're in a bull market, you should Buy.";
             } else {
                 return "You're in a bear market, you should not buy";
             }
 
             // error handling for buffers
-        } catch (FileNotFoundException e) {
-            e.printStackTrace();
         } catch (IOException e) {
             e.printStackTrace();
         } finally {
