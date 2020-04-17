@@ -1,24 +1,21 @@
 package com.github.johnmedlockdev.main.data;
 
 import java.io.BufferedReader;
-import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
 import java.util.Arrays;
 
 public class Data {
-    // instance vars
-    private String ticker;
-    private double price;
-    private String fileFullName;
-
     ///// code reads csv
     BufferedReader br = null;
     String line = "";
-
     int total;
     int count;
     double sum;
+    // instance vars
+    private final String ticker;
+    private double price;
+    private final String fileFullName;
 
     // constructors
     public Data(String ticker, double price, String fileFullName) {
@@ -39,7 +36,12 @@ public class Data {
         return this.price;
     }
 
-    // =======
+    // setters
+    public void setPrice(double price) {
+        this.price = price;
+    }
+
+//    methods
     public String getPrediction() {
 
         // code reads csv
@@ -97,12 +99,6 @@ public class Data {
         }
 
         return null;
-    }
-    // =======
-
-    // setters
-    public void setPrice(double price) {
-        this.price = price;
     }
 
 }

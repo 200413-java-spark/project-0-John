@@ -33,7 +33,7 @@ getPrediction(): refactored code to be less loopy.
 
 - implemented feature for file name creation based on ticker input.
 - created scripts: build, clean, run (sh) to speed up development
-- Setup inital Maven environment
+- Setup initial Maven environment
 
 ### Changed
 

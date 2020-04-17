@@ -1,9 +1,9 @@
 package com.github.johnmedlockdev.main;
 
+import com.github.johnmedlockdev.main.data.Data;
+
 import java.io.*;
 import java.util.Random;
-
-import com.github.johnmedlockdev.main.data.Data;
 
 class Main {
     public static void main(String[] args) throws IOException {
@@ -13,10 +13,8 @@ class Main {
         String ticker = args[1].toUpperCase();
         double price = Double.parseDouble(args[2]);
 
-
         // Scaffolding
-        String staticPath = "C:\\Users\\johnm\\IdeaProjects\\project-0-John\\src\\main\\java\\com\\github\\johnmedlockdev\\main\\data\\storage\\";
-        String fileFullName = staticPath + ticker + ".csv";
+        String fileFullName = new File("").getAbsolutePath() + "\\src\\main\\java\\com\\github\\johnmedlockdev\\main\\data\\storage\\" + ticker + ".csv";
         File path = new File(fileFullName);
 
         // create instance
@@ -71,15 +69,6 @@ class Main {
 
 
         }
-
-        // how to write a file
-
-        // how to read a file
-        // BufferedReader reader = new BufferedReader(new InputStreamReader(new
-        // FileInputStream(path)));
-        // String firstLine = reader.readLine();
-        // reader.close();
-        // System.out.println("read a line:" + firstLine);
 
     }
 }
