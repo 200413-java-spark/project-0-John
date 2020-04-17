@@ -1,5 +1,7 @@
 .classpath
 .project
+.idea/*
+trade-advisor.iml
 .settings/org.eclipse.jdt.apt.core.prefs
 .settings/org.eclipse.jdt.core.prefs
 .settings/org.eclipse.m2e.core.prefs
@@ -10,3 +12,5 @@ target/maven-archiver/pom.properties
 target/maven-status/maven-compiler-plugin/compile/default-compile/createdFiles.lst
 target/maven-status/maven-compiler-plugin/compile/default-compile/inputFiles.lst
 .vscode/
+package-lock.json
+node_modules
