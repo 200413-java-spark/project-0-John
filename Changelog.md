@@ -4,10 +4,12 @@
 ### Added
 - created class FileInfo to abstract away the file creation from main method.
 - created class ParseInput to abstract away the parsing from main method.
-
+- created an interface for strategies 
+- created abstract parent class for strategies.
 ### Changed
 - modified main method to reflect changes made in FileInfo, ParseInput, and simplified control flow.
 - refactored Data class 
+- refactored getprediction method. Will be refactored further.
 
 ## Version 0.1.1
 
