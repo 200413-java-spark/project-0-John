@@ -2,10 +2,10 @@ package com.github.johnmedlockdev.main.data;
 
 import com.github.johnmedlockdev.main.file.FileInfo;
 import com.github.johnmedlockdev.main.parse.ParseInput;
+import com.github.johnmedlockdev.main.strategy.Strategy;
+import com.github.johnmedlockdev.main.strategy.strategies.test;
 
-import javax.swing.plaf.synth.SynthOptionPaneUI;
 import java.io.*;
-import java.util.Arrays;
 import java.util.Random;
 
 public class Data {
@@ -43,6 +43,10 @@ public class Data {
         return this.price;
     }
 
+    public String getFileFullName(){
+        return this.fileFullName;
+    };
+
     // setters
     public void setPrice(double price) {
         this.price = price;
@@ -52,65 +56,22 @@ public class Data {
         return this.method;
     }
 
+
     //    methods
 
-    public void getPrediction() {
+    public void getPrediction() throws IOException {
+        Strategy strat = new test(this);
 
-        // code reads csv
-        try {
 
-            // gets number of lines in file
-            br = new BufferedReader(new FileReader(fileFullName));
-            while ((line = br.readLine()) != null) {
-                total++;
-            }
+//        Todo create function factory
 
-            // defines len of range
-            String[] strRange = new String[total];
 
-            // creates array of string values and parses extra "
-            br = new BufferedReader(new FileReader(fileFullName));
-            while ((line = br.readLine()) != null) {
 
-                strRange[count] = line;
-                count++;
-
-            }
-//            Parses String array to double array.
-            double[] doubleValues = Arrays.stream(strRange)
-                    .mapToDouble(Double::parseDouble)
-                    .toArray();
-
-            sum = 0;
-            for (double doubleValue : doubleValues) {
-                sum += doubleValue;
-            }
-
-//            where the moving average is.
-            double average = sum / total;
-
-//
-            if (average > doubleValues[count - 1]) {
-                System.out.println("You're in a bull market, you should Buy.");
-            } else {
-                System.out.println("You're in a bear market, you should not buy");
-            }
-
-            // error handling for buffers
-        } catch (IOException e) {
-            e.printStackTrace();
-        } finally {
-            if (br != null) {
-                try {
-                    br.close();
-                } catch (IOException e) {
-                    e.printStackTrace();
-                }
-            }
-        }
-
+        strat.advise();
 
     }
+
+//todo make the best output combination
 
     public void createFile() throws IOException {
 
@@ -152,3 +113,7 @@ public class Data {
         }
     }
 }
+//TODO:
+// deal with io exceptions with try catch blocks
+// Optimize file read right
+// abstract strategy template
