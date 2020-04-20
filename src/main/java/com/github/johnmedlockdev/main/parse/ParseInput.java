@@ -2,28 +2,28 @@ package com.github.johnmedlockdev.main.parse;
 
 public class ParseInput {
 
-    protected String method;
-    protected String ticker;
-    protected double price;
+    private String method;
+    private String ticker;
+    private double price;
 
 
-    public ParseInput(String ...args) {
+    public ParseInput(String... args) {
 
         // parse input
-         this.method= args[0];
-         this.ticker = args[1].toUpperCase();
-         this.price = Double.parseDouble(args[2]);
+        this.method = args[0];
+        this.ticker = args[1].toUpperCase();
+        this.price = Double.parseDouble(args[2]);
     }
 
-     public String getMethod(){
+    public String getMethod() {
         return this.method;
     }
 
-    public String getTicker(){
+    public String getTicker() {
         return this.ticker;
     }
 
-    public double getPrice(){
+    public double getPrice() {
         return this.price;
     }
 }

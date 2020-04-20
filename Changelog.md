@@ -1,9 +1,15 @@
 # Changelog
-
-## Version 0.1.1
+## Version 0.1.2
 
 ### Added
+- created class FileInfo to abstract away the file creation from main method.
+- created class ParseInput to abstract away the parsing from main method.
 
+### Changed
+- modified main method to reflect changes made in FileInfo, ParseInput, and simplified control flow.
+- refactored Data class 
+
+## Version 0.1.1
 
 ### Changed
 
@@ -41,7 +47,7 @@ getPrediction(): refactored code to be less loopy.
 
 ### Added
 
-- implemented feature for file name creation based on ticker input.
+- Add a feature for file name creation based on ticker input.
 - created scripts: build, clean, run (sh) to speed up development
 - Setup initial Maven environment
 

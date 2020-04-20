@@ -1,31 +1,38 @@
 package com.github.johnmedlockdev.main.data;
 
-import java.io.BufferedReader;
-import java.io.FileReader;
-import java.io.IOException;
+import com.github.johnmedlockdev.main.file.FileInfo;
+import com.github.johnmedlockdev.main.parse.ParseInput;
+
+import javax.swing.plaf.synth.SynthOptionPaneUI;
+import java.io.*;
 import java.util.Arrays;
+import java.util.Random;
 
 public class Data {
-    ///// code reads csv
-    BufferedReader br = null;
-    String line = "";
-    int total;
-    int count;
-    double sum;
-    // instance vars
-    private final String ticker;
+
+    private String ticker;
     private double price;
-    private final String fileFullName;
+    private String method;
+    private String fileFullName;
+    private File path;
 
-    // constructors
-    public Data(String ticker, double price, String fileFullName) {
-        this.ticker = ticker;
-        this.price = price;
-        this.fileFullName = fileFullName;
+    //    prediction logic
+    private BufferedReader br = null;
+    private String line = "";
+    private int total;
+    private int count;
+    private double sum;
+    //    prediction logic
 
+
+    public Data(ParseInput userInput, FileInfo fileInfo) {
+        this.ticker = userInput.getTicker();
+        this.price = userInput.getPrice();
+        this.method = userInput.getMethod();
+        this.fileFullName = fileInfo.getFileFullName();
+        this.path = fileInfo.getPath();
     }
 
-    // instance methods
 
     // getters
     public String getTicker() {
@@ -41,8 +48,13 @@ public class Data {
         this.price = price;
     }
 
-//    methods
-    public String getPrediction() {
+    public String getMethod() {
+        return this.method;
+    }
+
+    //    methods
+
+    public void getPrediction() {
 
         // code reads csv
         try {
@@ -50,7 +62,6 @@ public class Data {
             // gets number of lines in file
             br = new BufferedReader(new FileReader(fileFullName));
             while ((line = br.readLine()) != null) {
-
                 total++;
             }
 
@@ -80,9 +91,9 @@ public class Data {
 
 //
             if (average > doubleValues[count - 1]) {
-                return "You're in a bull market, you should Buy.";
+                System.out.println("You're in a bull market, you should Buy.");
             } else {
-                return "You're in a bear market, you should not buy";
+                System.out.println("You're in a bear market, you should not buy");
             }
 
             // error handling for buffers
@@ -98,11 +109,46 @@ public class Data {
             }
         }
 
-        return null;
+
     }
 
-}
+    public void createFile() throws IOException {
 
-// create method to store data on json or csv
-// create method to make calculate 200 day moving avg
-// create method to decide wether to make trade or not to make trades
+        OutputStream outputStream = new FileOutputStream(this.path);
+        String contentsToWrite = Double.toString(this.price);
+        outputStream.write(contentsToWrite.getBytes());
+        outputStream.close();
+        System.out.println("New file created for " + this.ticker);
+
+    }
+
+    public void createInput() throws IOException {
+
+        String contentsToWrite = Double.toString(this.price);
+        BufferedWriter writer = new BufferedWriter(
+                new FileWriter(this.fileFullName, true)
+        );
+        writer.newLine();   //Add new line
+        writer.write(contentsToWrite);
+        writer.close();
+
+        System.out.println("The data file exist");
+    }
+
+    public void generate() throws IOException {
+
+        String contentsToWrite = Double.toString(price);
+        for (int i = 0; i < 200; i++) {
+            Random r = new Random(); // creating Random object
+            double randomValue = 1 + (10 - 1) * r.nextDouble();
+            String ranStr = String.format("%.2f", randomValue);
+
+            BufferedWriter writer = new BufferedWriter(
+                    new FileWriter(fileFullName, true)
+            );
+            writer.newLine();   //Add new line
+            writer.write(ranStr);
+            writer.close();
+        }
+    }
+}

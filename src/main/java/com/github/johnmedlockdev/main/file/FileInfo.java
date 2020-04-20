@@ -5,20 +5,21 @@ import com.github.johnmedlockdev.main.parse.ParseInput;
 import java.io.File;
 
 public class FileInfo {
-    String fileFullName;
-    File path;
+    private String fileFullName;
+    private File path;
 
-    public FileInfo(ParseInput userInput){
-        fileFullName = new File("").getAbsolutePath() + "\\src\\main\\java\\com\\github\\johnmedlockdev\\main\\data\\storage\\" + userInput.getTicker()+ ".csv";
+    public FileInfo(ParseInput userInput) {
+        fileFullName = new File("").getAbsolutePath() + "\\src\\main\\java\\com\\github\\johnmedlockdev\\main\\data\\storage\\" + userInput.getTicker() + ".csv";
         path = new File(fileFullName);
     }
 
-    public String getFileFullName(){
+    public String getFileFullName() {
         return this.fileFullName;
     }
 
-    public File getPath(){
+    public File getPath() {
         return this.path;
     }
+
 }
 
