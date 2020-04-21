@@ -15,9 +15,8 @@ public class Data {
     private final String fileFullName;
     private final File path;
     private double price;
-    //Todo
-    private String strategy;
-    //Todo
+    private BufferedWriter writer;
+    private BufferedReader reader;
 
 
     // constructors
@@ -58,7 +57,7 @@ public class Data {
         Strategy strategy;
 
 // get user input to display which strategy they want.
-        BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
+        reader = new BufferedReader(new InputStreamReader(System.in));
         System.out.println("Which strategy would you like to use?");
         String nameOfStrategy = reader.readLine();
 
@@ -72,54 +71,53 @@ public class Data {
                 throw new IllegalStateException("Unexpected value: " + nameOfStrategy);
         }
 
-//        Todo create function factory
+//        Todo create more strategies
 
         strategy.advise();
 
     }
 
-//todo make the best output combination
 
     public void createFile() throws IOException {
 
-        OutputStream outputStream = new FileOutputStream(this.path);
-        String contentsToWrite = Double.toString(this.price);
-        outputStream.write(contentsToWrite.getBytes());
-        outputStream.close();
-        System.out.println("New file created for " + this.ticker);
+        if(!path.exists()) {
+            OutputStream outputStream = new FileOutputStream(this.path);
+        }
 
+        createInput();
     }
 
     public void createInput() throws IOException {
 
-        String contentsToWrite = Double.toString(this.price);
-        BufferedWriter writer = new BufferedWriter(
+        String priceInput = Double.toString(this.price);
+        writer = new BufferedWriter(
                 new FileWriter(this.fileFullName, true)
         );
-        writer.newLine();   //Add new line
-        writer.write(contentsToWrite);
+        writer.write(priceInput);
+        writer.newLine();
         writer.close();
 
-        System.out.println("The data file exist");
     }
 
     public void generate() throws IOException {
 
-        OutputStream outputStream = new FileOutputStream(this.path);
+        if(!path.exists()) {
+            OutputStream outputStream = new FileOutputStream(this.path);
+        }
+
         for (int i = 0; i < 200; i++) {
             Random r = new Random(); // creating Random object
             double randomValue = 1 + (10 - 1) * r.nextDouble();
             String ranStr = String.format("%.2f", randomValue);
 
-            BufferedWriter writer = new BufferedWriter(
+            writer = new BufferedWriter(
                     new FileWriter(fileFullName, true)
             );
-            writer.newLine();   //Add new line
             writer.write(ranStr);
+            writer.newLine();
             writer.close();
         }
     }
 }
 //TODO:
-// fix first input blank bug generate
 // create more test replace test
