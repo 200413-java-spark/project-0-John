@@ -1,4 +1,10 @@
 # Changelog
+## Version 0.2.1
+
+### Changed
+- fixed file writer bugs with adding a space before operation. 
+- new input now checks if the user already created a file. if the file does exist it just adds to the file.
+
 ## Version 0.2.0
 
 ### Changed
