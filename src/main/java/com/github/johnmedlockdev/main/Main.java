@@ -13,16 +13,22 @@ public class Main {
         FileInfo fileInfo = new FileInfo(userInput);
         Data data = new Data(userInput, fileInfo);
 
-        if (data.getMethod().equals("new")) {
-            data.createFile();
-        } else if (data.getMethod().equals("add")) {
-            data.createInput();
-        } else if (data.getMethod().equals("generate")) {
-            data.generate();
-        } else if (data.getMethod().equals("predict")) {
-            data.getPrediction();
-        }else {
-            System.out.println("Not a valid method.");
+        switch (data.getMethod()) {
+            case "new":
+                data.createFile();
+                break;
+            case "add":
+                data.createInput();
+                break;
+            case "generate":
+                data.generate();
+                break;
+            case "predict":
+                data.getPrediction();
+                break;
+            default:
+                System.out.println("Not a valid method.");
+                break;
         }
 
 

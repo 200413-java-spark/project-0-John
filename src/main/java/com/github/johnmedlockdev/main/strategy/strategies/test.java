@@ -2,12 +2,11 @@ package com.github.johnmedlockdev.main.strategy.strategies;
 
 import com.github.johnmedlockdev.main.data.Data;
 import com.github.johnmedlockdev.main.strategy.Strategy;
-import com.github.johnmedlockdev.main.strategy.StrategyTemplate;
 
 import java.io.IOException;
 import java.util.Arrays;
 
-public class test extends Strategy  {
+public class test extends Strategy {
     double[] values = super.processData();
 
     public test(Data data) throws IOException {
@@ -15,8 +14,8 @@ public class test extends Strategy  {
     }
 
 
-    public void advise(){
-      System.out.println(Arrays.toString(values));
+    public void advise() {
+        System.out.println(Arrays.toString(values));
     }
 }
 

@@ -8,12 +8,20 @@ public class ParseInput {
 
 
     public ParseInput(String... args) {
+        if (args.length == 2) {
+            this.method = args[0];
+            this.ticker = args[1].toUpperCase();
+        }
 
-        // parse input
-        this.method = args[0];
-        this.ticker = args[1].toUpperCase();
-        this.price = Double.parseDouble(args[2]);
+        if (args.length == 3) {
+            System.out.println(args.length); // 3
+            this.method = args[0];
+            this.ticker = args[1].toUpperCase();
+            this.price = Double.parseDouble(args[2]);
+        }
+
     }
+
 
     public String getMethod() {
         return this.method;

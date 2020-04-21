@@ -1,4 +1,14 @@
 # Changelog
+## Version 0.2.0
+
+### Changed
+- created factory for more than one strategy.
+- reduced number of inputs needed in order to generate and predict.
+- added file creation functionality to generate command.
+
+### Removed
+- scripts folder and run scripts
+- removed exec dependency from pom file.
 ## Version 0.1.2
 
 ### Added
@@ -6,6 +16,7 @@
 - created class ParseInput to abstract away the parsing from main method.
 - created an interface for strategies 
 - created abstract parent class for strategies.
+
 ### Changed
 - modified main method to reflect changes made in FileInfo, ParseInput, and simplified control flow.
 - refactored Data class 

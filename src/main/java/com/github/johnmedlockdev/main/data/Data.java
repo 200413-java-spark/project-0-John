@@ -9,22 +9,18 @@ import java.io.*;
 import java.util.Random;
 
 public class Data {
-
-    private String ticker;
+    //instance variables
+    private final String ticker;
+    private final String method;
+    private final String fileFullName;
+    private final File path;
     private double price;
-    private String method;
-    private String fileFullName;
-    private File path;
-
-    //    prediction logic
-    private BufferedReader br = null;
-    private String line = "";
-    private int total;
-    private int count;
-    private double sum;
-    //    prediction logic
+    //Todo
+    private String strategy;
+    //Todo
 
 
+    // constructors
     public Data(ParseInput userInput, FileInfo fileInfo) {
         this.ticker = userInput.getTicker();
         this.price = userInput.getPrice();
@@ -43,13 +39,13 @@ public class Data {
         return this.price;
     }
 
-    public String getFileFullName(){
-        return this.fileFullName;
-    };
-
     // setters
     public void setPrice(double price) {
         this.price = price;
+    }
+
+    public String getFileFullName() {
+        return this.fileFullName;
     }
 
     public String getMethod() {
@@ -57,17 +53,28 @@ public class Data {
     }
 
 
-    //    methods
-
+    //  methods
     public void getPrediction() throws IOException {
-        Strategy strat = new test(this);
+        Strategy strategy;
 
+// get user input to display which strategy they want.
+        BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
+        System.out.println("Which strategy would you like to use?");
+        String nameOfStrategy = reader.readLine();
+
+
+        switch (nameOfStrategy) {
+            case "test":
+                strategy = new test(this);
+                break;
+
+            default:
+                throw new IllegalStateException("Unexpected value: " + nameOfStrategy);
+        }
 
 //        Todo create function factory
 
-
-
-        strat.advise();
+        strategy.advise();
 
     }
 
@@ -98,7 +105,7 @@ public class Data {
 
     public void generate() throws IOException {
 
-        String contentsToWrite = Double.toString(price);
+        OutputStream outputStream = new FileOutputStream(this.path);
         for (int i = 0; i < 200; i++) {
             Random r = new Random(); // creating Random object
             double randomValue = 1 + (10 - 1) * r.nextDouble();
@@ -114,6 +121,5 @@ public class Data {
     }
 }
 //TODO:
-// deal with io exceptions with try catch blocks
-// Optimize file read right
-// abstract strategy template
+// fix first input blank bug generate
+// create more test replace test
