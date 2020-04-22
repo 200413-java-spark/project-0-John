@@ -15,8 +15,10 @@ public class Data {
     private final String fileFullName;
     private final File path;
     private double price;
+
     private BufferedWriter writer;
     private BufferedReader reader;
+    private Strategy strategy;
 
 
     // constructors
@@ -54,13 +56,10 @@ public class Data {
 
     //  methods
     public void getPrediction() throws IOException {
-        Strategy strategy;
-
-// get user input to display which strategy they want.
+        // get user input to display which strategy they want.
         reader = new BufferedReader(new InputStreamReader(System.in));
         System.out.println("Which strategy would you like to use?");
         String nameOfStrategy = reader.readLine();
-
 
         switch (nameOfStrategy) {
             case "test":
@@ -90,6 +89,7 @@ public class Data {
     public void createInput() throws IOException {
 
         String priceInput = Double.toString(this.price);
+
         writer = new BufferedWriter(
                 new FileWriter(this.fileFullName, true)
         );
@@ -118,6 +118,5 @@ public class Data {
             writer.close();
         }
     }
+
 }
-//TODO:
-// create more test replace test
