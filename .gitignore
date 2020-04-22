@@ -1,0 +1,6 @@
+.idea
+.project
+.classpath
+src/main/java/com/github/johnmedlockdev/main/data/storage/
+src/main/java/com/github/johnmedlockdev/main/database/db.properties
+target/
