@@ -24,31 +24,37 @@ public class Strategy implements StrategyTemplate {
     }
 
     @Override
-    public double[] processData() throws IOException {
-        // code reads csv
-        // gets number of lines in file
-        br = new BufferedReader(new FileReader(fileFullName));
-        while ((line = br.readLine()) != null) {
-            total++;
-        }
+    public double[] processData() {
 
-        // defines len of range
-        String[] strRange = new String[total];
+        try {// code reads csv
+            // gets number of lines in file
+            br = new BufferedReader(new FileReader(fileFullName));
+            while ((line = br.readLine()) != null) {
+                total++;
+            }
 
-        // creates array of string values and parses extra "
-        br = new BufferedReader(new FileReader(fileFullName));
-        while ((line = br.readLine()) != null) {
-            strRange[count] = line;
-            count++;
-        }
+            // defines len of range
+            String[] strRange = new String[total];
+
+            // creates array of string values and parses extra "
+            br = new BufferedReader(new FileReader(fileFullName));
+            while ((line = br.readLine()) != null) {
+                strRange[count] = line;
+                count++;
+            }
 //            Parses String array to double array.
-        double[] doubleValues;
+            double[] doubleValues;
 
-        doubleValues = Arrays.stream(strRange)
-                .mapToDouble(Double::parseDouble)
-                .toArray();
+            doubleValues = Arrays.stream(strRange)
+                    .mapToDouble(Double::parseDouble)
+                    .toArray();
 
-        return doubleValues;
+            return doubleValues;
+        }catch (Exception e)
+        {System.out.println("exception handled");
+        }
+return null;
+
     }
 
     @Override
