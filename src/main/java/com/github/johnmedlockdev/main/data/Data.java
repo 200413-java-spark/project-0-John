@@ -4,6 +4,8 @@ import com.github.johnmedlockdev.main.file.FileInfo;
 import com.github.johnmedlockdev.main.parse.ParseInput;
 import com.github.johnmedlockdev.main.strategy.Strategy;
 import com.github.johnmedlockdev.main.strategy.strategies.test;
+import com.github.johnmedlockdev.main.strategy.strategies.test1;
+import com.github.johnmedlockdev.main.strategy.strategies.test2;
 
 import java.io.*;
 import java.util.Random;
@@ -17,8 +19,6 @@ public class Data {
     private double price;
 
     private BufferedWriter writer;
-    private BufferedReader reader;
-    private Strategy strategy;
 
 
     // constructors
@@ -29,7 +29,6 @@ public class Data {
         this.fileFullName = fileInfo.getFileFullName();
         this.path = fileInfo.getPath();
     }
-
 
     // getters
     public String getTicker() {
@@ -59,20 +58,24 @@ public class Data {
 
         try {
             // get user input to display which strategy they want.
-            reader = new BufferedReader(new InputStreamReader(System.in));
+            BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
             System.out.println("Which strategy would you like to use?");
             String nameOfStrategy = reader.readLine();
 
+            Strategy strategy;
             switch (nameOfStrategy) {
                 case "test":
                     strategy = new test(this);
                     break;
-
+                case "test1":
+                    strategy = new test1(this);
+                    break;
+                case "test2":
+                    strategy = new test2(this);
+                    break;
                 default:
                     throw new IllegalStateException("Unexpected value: " + nameOfStrategy);
             }
-
-//        Todo create more strategies
 
             strategy.advise();
 
@@ -89,7 +92,7 @@ public class Data {
                 OutputStream outputStream = new FileOutputStream(this.path);
             }
             createInput();
-        } catch(IOException e) {
+        } catch (IOException e) {
             System.out.println("Completed!");
         }
     }
@@ -104,7 +107,7 @@ public class Data {
             writer.write(priceInput);
             writer.newLine();
             writer.close();
-        } catch(IOException e) {
+        } catch (IOException e) {
             System.out.println("Completed!");
         }
     }
@@ -129,10 +132,29 @@ public class Data {
                 writer.close();
             }
 
-        } catch(IOException e) {
+        } catch (IOException e) {
             System.out.println("Completed!");
         }
 
     }
 
+    public void logic() {
+        switch (getMethod()) {
+            case "new":
+                createFile();
+                break;
+            case "add":
+                createInput();
+                break;
+            case "generate":
+                generate();
+                break;
+            case "predict":
+                getPrediction();
+                break;
+            default:
+                System.out.println("Not a valid method.");
+                break;
+        }
+    }
 }

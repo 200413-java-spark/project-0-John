@@ -1,4 +1,17 @@
 # Changelog
+## Version 0.2.2
+
+### Added
+
+- future.txt file for a pipeline.
+- Implemented test for the Data obj.
+
+### Changed
+
+- try catch blocks for IO functions 
+- ParseInput now implements a batch function.
+- cleaned up data switch in main func.
+
 ## Version 0.2.1
 
 ### Changed
@@ -15,6 +28,7 @@
 ### Removed
 - scripts folder and run scripts
 - removed exec dependency from pom file.
+
 ## Version 0.1.2
 
 ### Added
@@ -44,7 +58,6 @@
 ### Changed
 
 getPrediction(): refactored code to be less loopy.
-
 
 ## Version 0.0.2
 

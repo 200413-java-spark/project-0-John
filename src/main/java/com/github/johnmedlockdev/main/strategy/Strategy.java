@@ -8,9 +8,7 @@ import java.util.Arrays;
 
 public class Strategy implements StrategyTemplate {
 
-    private String fileFullName;
-    private BufferedReader br = null;
-    private String line = "";
+    private final String fileFullName;
     private int total;
     private int count;
     private double sum;
@@ -24,7 +22,8 @@ public class Strategy implements StrategyTemplate {
 
         try {// code reads csv
             // gets number of lines in file
-            br = new BufferedReader(new FileReader(fileFullName));
+            BufferedReader br = new BufferedReader(new FileReader(fileFullName));
+            String line = "";
             while ((line = br.readLine()) != null) {
                 total++;
             }

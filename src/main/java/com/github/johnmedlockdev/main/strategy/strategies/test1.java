@@ -5,10 +5,10 @@ import com.github.johnmedlockdev.main.strategy.Strategy;
 
 import java.util.Arrays;
 
-public class test extends Strategy {
+public class test1 extends Strategy {
     double[] values = super.processData();
 
-    public test(Data data) {
+    public test1(Data data) {
         super(data);
 
     }
@@ -16,7 +16,6 @@ public class test extends Strategy {
 
     public void advise() {
         System.out.println(Arrays.toString(values));
-
     }
 }
 
