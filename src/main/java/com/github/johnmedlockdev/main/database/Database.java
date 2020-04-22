@@ -2,10 +2,7 @@ package com.github.johnmedlockdev.main.database;
 
 import java.io.FileReader;
 import java.io.IOException;
-import java.sql.Connection;
-import java.sql.DriverManager;
-import java.sql.SQLException;
-import java.sql.Statement;
+import java.sql.*;
 import java.util.Properties;
 
 public class Database {
@@ -25,7 +22,14 @@ public class Database {
 
         Connection conn = DriverManager.getConnection(url, user, password);
 
-        Statement stmt = conn.prepareStatement(getAll);
+        Statement stmt = conn.createStatement();
+        ResultSet rs = stmt.executeQuery(getAll);
+        while (rs.next()) {
+//            String[] args;
+//            args[0] = rs.getString("operation");
+//            then he added it to array that he defined earlier
+            // todo: learn prepared statement syntax
+        }
     }
 
 
