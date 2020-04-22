@@ -55,68 +55,84 @@ public class Data {
 
 
     //  methods
-    public void getPrediction() throws IOException {
-        // get user input to display which strategy they want.
-        reader = new BufferedReader(new InputStreamReader(System.in));
-        System.out.println("Which strategy would you like to use?");
-        String nameOfStrategy = reader.readLine();
+    public void getPrediction() {
 
-        switch (nameOfStrategy) {
-            case "test":
-                strategy = new test(this);
-                break;
+        try {
+            // get user input to display which strategy they want.
+            reader = new BufferedReader(new InputStreamReader(System.in));
+            System.out.println("Which strategy would you like to use?");
+            String nameOfStrategy = reader.readLine();
 
-            default:
-                throw new IllegalStateException("Unexpected value: " + nameOfStrategy);
-        }
+            switch (nameOfStrategy) {
+                case "test":
+                    strategy = new test(this);
+                    break;
+
+                default:
+                    throw new IllegalStateException("Unexpected value: " + nameOfStrategy);
+            }
 
 //        Todo create more strategies
 
-        strategy.advise();
+            strategy.advise();
 
-    }
-
-
-    public void createFile() throws IOException {
-
-        if(!path.exists()) {
-            OutputStream outputStream = new FileOutputStream(this.path);
+        } catch (IOException e) {
+            System.out.println("Completed!");
         }
 
-        createInput();
     }
 
-    public void createInput() throws IOException {
 
-        String priceInput = Double.toString(this.price);
-
-        writer = new BufferedWriter(
-                new FileWriter(this.fileFullName, true)
-        );
-        writer.write(priceInput);
-        writer.newLine();
-        writer.close();
-
-    }
-
-    public void generate() throws IOException {
-
-        if(!path.exists()) {
-            OutputStream outputStream = new FileOutputStream(this.path);
+    public void createFile() {
+        try {
+            if (!path.exists()) {
+                OutputStream outputStream = new FileOutputStream(this.path);
+            }
+            createInput();
+        } catch(IOException e) {
+            System.out.println("Completed!");
         }
+    }
 
-        for (int i = 0; i < 200; i++) {
-            Random r = new Random(); // creating Random object
-            double randomValue = 1 + (10 - 1) * r.nextDouble();
-            String ranStr = String.format("%.2f", randomValue);
+    public void createInput() {
+        try {
+            String priceInput = Double.toString(this.price);
 
             writer = new BufferedWriter(
-                    new FileWriter(fileFullName, true)
+                    new FileWriter(this.fileFullName, true)
             );
-            writer.write(ranStr);
+            writer.write(priceInput);
             writer.newLine();
             writer.close();
+        } catch(IOException e) {
+            System.out.println("Completed!");
         }
+    }
+
+    public void generate() {
+        try {
+
+            if (!path.exists()) {
+                OutputStream outputStream = new FileOutputStream(this.path);
+            }
+
+            for (int i = 0; i < 200; i++) {
+                Random r = new Random(); // creating Random object
+                double randomValue = 1 + (10 - 1) * r.nextDouble();
+                String ranStr = String.format("%.2f", randomValue);
+
+                writer = new BufferedWriter(
+                        new FileWriter(fileFullName, true)
+                );
+                writer.write(ranStr);
+                writer.newLine();
+                writer.close();
+            }
+
+        } catch(IOException e) {
+            System.out.println("Completed!");
+        }
+
     }
 
 }

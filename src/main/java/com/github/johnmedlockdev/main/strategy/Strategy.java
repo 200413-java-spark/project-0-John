@@ -4,20 +4,16 @@ import com.github.johnmedlockdev.main.data.Data;
 
 import java.io.BufferedReader;
 import java.io.FileReader;
-import java.io.IOException;
 import java.util.Arrays;
 
 public class Strategy implements StrategyTemplate {
 
     private String fileFullName;
-
-    //    prediction logic
     private BufferedReader br = null;
     private String line = "";
     private int total;
     private int count;
     private double sum;
-    //    prediction logic
 
     protected Strategy(Data data) {
         this.fileFullName = data.getFileFullName();
@@ -50,11 +46,10 @@ public class Strategy implements StrategyTemplate {
                     .toArray();
 
             return doubleValues;
-        }catch (Exception e)
-        {System.out.println("exception handled");
+        } catch (Exception e) {
+            System.out.println("exception handled");
+            return null;
         }
-return null;
-
     }
 
     @Override

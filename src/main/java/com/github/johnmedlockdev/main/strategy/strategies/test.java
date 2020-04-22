@@ -3,14 +3,14 @@ package com.github.johnmedlockdev.main.strategy.strategies;
 import com.github.johnmedlockdev.main.data.Data;
 import com.github.johnmedlockdev.main.strategy.Strategy;
 
-import java.io.IOException;
 import java.util.Arrays;
 
 public class test extends Strategy {
     double[] values = super.processData();
 
-    public test(Data data) throws IOException {
+    public test(Data data) {
         super(data);
+
     }
 
 

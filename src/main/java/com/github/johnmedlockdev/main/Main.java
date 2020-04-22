@@ -4,10 +4,8 @@ import com.github.johnmedlockdev.main.data.Data;
 import com.github.johnmedlockdev.main.file.FileInfo;
 import com.github.johnmedlockdev.main.parse.ParseInput;
 
-import java.io.IOException;
-
 public class Main {
-    public static void main(String... args) throws IOException {
+    public static void main(String... args) {
 
         ParseInput userInput = new ParseInput(args);
         FileInfo fileInfo = new FileInfo(userInput);
