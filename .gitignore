@@ -1,6 +1,7 @@
 .idea
 .project
 .classpath
-src/main/java/com/github/johnmedlockdev/main/data/storage/
+src/main/java/com/github/johnmedlockdev/main/data/storage/APPL.csv
+src/main/java/com/github/johnmedlockdev/main/data/storage/SPY.csv
 src/main/java/com/github/johnmedlockdev/main/database/db.properties
 target/
