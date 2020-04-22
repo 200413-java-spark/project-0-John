@@ -1,8 +1,5 @@
 trade-advisor.iml
 target/*
-.idea/*
-.gitignore
-.classpath
-.project
+.*
 src/main/java/com/github/johnmedlockdev/main/data/storage/SPY.csv
 src/main/java/com/github/johnmedlockdev/main/data/storage/APPL.csv
