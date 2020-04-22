@@ -5,10 +5,12 @@ import com.github.johnmedlockdev.main.database.Database;
 import com.github.johnmedlockdev.main.file.FileInfo;
 import com.github.johnmedlockdev.main.parse.ParseInput;
 
+import java.io.IOException;
+import java.sql.SQLException;
 import java.util.Scanner;
 
 public class Main {
-    public static void main(String... args) {
+    public static void main(String... args) throws SQLException, IOException, ClassNotFoundException {
 
         while (true) {
             ParseInput userInput = new ParseInput(args);

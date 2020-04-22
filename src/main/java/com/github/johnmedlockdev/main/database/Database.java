@@ -6,19 +6,25 @@ import java.sql.*;
 import java.util.Properties;
 
 public class Database {
-    public Database(String fileName) {
 
+    private final String propertiesFile = "src/main/java/com/github/johnmedlockdev/main/database/db.properties";
+
+    public Database(String fileName) throws SQLException, IOException, ClassNotFoundException {
+        getSql();
     }
 
-    private void getSql() throws IOException, SQLException {
+    private void getSql() throws IOException, SQLException, ClassNotFoundException {
 
-        FileReader reader = new FileReader("db.properties");
+        FileReader reader = new FileReader(propertiesFile);
         Properties p = new Properties();
         p.load(reader);
+
         String user = p.getProperty("user");
         String password = p.getProperty("password");
         String url = p.getProperty("url");
         String getAll = p.getProperty("selectAll");
+
+        Class.forName(p.getProperty("postgresDriver"));
 
         Connection conn = DriverManager.getConnection(url, user, password);
 
