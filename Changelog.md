@@ -1,5 +1,18 @@
 # Changelog
 
+## Version 0.2.4
+
+### Added
+
+- batch mode read and writes without crashing.
+- seperated queries from db properties.
+- added logic gate for datbase object. 
+
+### Changed
+
+- broke getSQL() in to multiple parts
+- inputs in pom file.
+
 ## Version 0.2.3
 
 ### Added

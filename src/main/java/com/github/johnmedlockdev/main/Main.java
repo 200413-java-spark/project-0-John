@@ -12,6 +12,7 @@ import java.util.Scanner;
 public class Main {
     public static void main(String... args) throws SQLException, IOException, ClassNotFoundException {
 
+        // TODO: I'd like to refactor all this into a one liner. ^ deal with errors with proper blocks.
         while (true) {
             ParseInput userInput = new ParseInput(args);
 
@@ -26,6 +27,7 @@ public class Main {
                 // need to refactor this
                 if (userInput.getMode().equals("exit")) {
                     break;
+                    //TODO: this needs to properly exit the loop
                 }
                 System.out.println("What would you like to do with the database?");
                 Scanner scanner = new Scanner(System.in);  // Create a Scanner object

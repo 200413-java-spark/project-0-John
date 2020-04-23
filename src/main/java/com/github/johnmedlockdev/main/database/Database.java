@@ -8,11 +8,11 @@ import java.util.Scanner;
 
 public class Database {
 
-
     public Database(String function) throws SQLException, IOException, ClassNotFoundException {
         logic(function); // view || write || exit
     }
 
+    // TODO: duplicate code
     private void logic(String function) throws SQLException, IOException, ClassNotFoundException {
         if (function.equals("select")) {
             //     view = will write or append data to a local file in storage // ask for data name
@@ -21,15 +21,16 @@ public class Database {
             String fileName = scanner.nextLine();  // Read user input
 
             getSql(function, fileName);
-        } else if(function.equals("insert")) {
+        } else if (function.equals("insert")) {
             //     write = will write data from file stored in storage // ask for file name
             System.out.println("What's the name of your file?"); // file must be located in storage.
             Scanner scanner = new Scanner(System.in);  // Create a Scanner object
             String fileName = scanner.nextLine();  // Read user input
 
             getSql(function, fileName);
-        }else if(function.equals("exit")) {
+        } else if (function.equals("exit")) {
             System.out.println("Exiting batch mode.");
+            //TODO: this needs to properly exit the loop
         }
     }
 
@@ -67,6 +68,7 @@ public class Database {
         }
     }
 
+    // TODO: make read from csv file
     private void writeData(PreparedStatement statement) throws SQLException {
         statement.setString(1, "adsaf"); // set params based of what they are
         statement.setDouble(2, 345.34); // set params based of what they are
@@ -74,8 +76,8 @@ public class Database {
     }
 
     private Connection connectToDatabase() throws IOException, SQLException {
-        String propertiesFile = "src/main/java/com/github/johnmedlockdev/main/database/db.properties";
-        FileReader reader = new FileReader(propertiesFile);
+        String dbFile = "src/main/java/com/github/johnmedlockdev/main/database/db.properties";
+        FileReader reader = new FileReader(dbFile);
         Properties p = new Properties();
         p.load(reader);
 
@@ -90,6 +92,7 @@ public class Database {
 
     }
 
+    // TODO: probably need to refactor the properties file.
     private String getStatement(String method) throws IOException {
         String preparedStatement = "";
         String propertiesFile = "src/main/java/com/github/johnmedlockdev/main/database/statements.properties";
