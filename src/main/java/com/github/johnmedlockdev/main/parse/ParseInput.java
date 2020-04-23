@@ -37,7 +37,6 @@ public class ParseInput {
                 this.ticker = args[1].toUpperCase();
             }
             if (args.length == 3) { // manual
-                System.out.println(args.length); // 3
                 this.method = args[0];
                 this.ticker = args[1].toUpperCase();
                 this.price = Double.parseDouble(args[2]);

@@ -19,23 +19,24 @@ public class Database {
         Properties p = new Properties();
         p.load(reader);
 
-        String user = p.getProperty("user");
+        String username = p.getProperty("username");
         String password = p.getProperty("password");
         String url = p.getProperty("url");
         String getAll = p.getProperty("selectAll");
 
         Class.forName(p.getProperty("postgresDriver"));
 
-        Connection conn = DriverManager.getConnection(url, user, password);
 
-        Statement stmt = conn.createStatement();
-        ResultSet rs = stmt.executeQuery(getAll);
+        Connection db = DriverManager.getConnection(url,username, password);
+        Statement st = db.createStatement();
+        ResultSet rs = st.executeQuery(getAll);
+
         while (rs.next()) {
-//            String[] args;
-//            args[0] = rs.getString("operation");
-//            then he added it to array that he defined earlier
-            // todo: learn prepared statement syntax
+            System.out.print("Column 1 returned ");
+            System.out.println(rs.getString(1));
         }
+        rs.close();
+        st.close();
     }
 
 

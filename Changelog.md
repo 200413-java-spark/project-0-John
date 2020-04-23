@@ -1,4 +1,17 @@
 # Changelog
+
+## Version 0.2.3
+
+### Added
+
+- program now connects to postgres database
+- batch input option
+- loop added for process to take more actions.
+
+### Changed
+
+- inputs in pom file.
+
 ## Version 0.2.2
 
 ### Added

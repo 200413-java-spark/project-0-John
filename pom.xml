@@ -4,13 +4,13 @@
     <modelVersion>4.0.0</modelVersion>
     <groupId>com.github.johnmedlockdev</groupId>
     <artifactId>trade-advisor</artifactId>
-    <version>0.1.0</version>
+    <version>0.2.3</version>
 
     <properties>
         <maven.compiler.source>1.8</maven.compiler.source>
         <maven.compiler.target>1.8</maven.compiler.target>
         <exec.mainClass>com.github.johnmedlockdev.main.Main</exec.mainClass>
-        <exec.args>predict spy 50</exec.args>
+        <exec.args>batch</exec.args>
     </properties>
 
     <dependencies>
@@ -19,12 +19,12 @@
             <artifactId>junit</artifactId>
             <version>4.13</version>
         </dependency>
+
         <dependency>
             <groupId>org.postgresql</groupId>
             <artifactId>postgresql</artifactId>
             <version>42.2.12.jre7</version>
         </dependency>
-
     </dependencies>
 
 </project>
