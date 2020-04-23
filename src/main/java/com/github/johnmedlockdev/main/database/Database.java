@@ -9,7 +9,7 @@ public class Database {
 
 
     public Database(String fileName) throws SQLException, IOException, ClassNotFoundException {
-//        getSql("insert");
+        getSql("insert");
         getSql("select");
     }
 
@@ -18,30 +18,40 @@ public class Database {
         Connection conn = connectToDatabase();
 
 //      prepared statement setup
-        PreparedStatement stmt = conn.prepareStatement(getStatement(method)); // input sql statement with ?
-//
-//        stmt.setString(1, "spy"); // set params based of what they are
-//        stmt.setDouble(2, 54.34); // set params based of what they are
+        PreparedStatement statement = conn.prepareStatement(getStatement(method)); // input sql statement with ?
 
 //      Results set obj
-        ResultSet rs = stmt.executeQuery();
 
-        rs.next(); // you have to do this to get off the headers
-        System.out.println(rs.getInt(1)+" "+rs.getString(2) + " "+ rs.getDouble(3));
+        if (method.equals("select")) {
+            ResultSet rs = statement.executeQuery();
+            readData(rs);
+            rs.close(); // close connection
+        } else {
+            writeData(statement);
+        }
 
-        rs.close(); // close connection
-        stmt.close(); // close connection
+        statement.close(); // close connection
         conn.close(); // close connection
-
     }
 
 
-    private void readData() {
+    private void readData(ResultSet rs) throws SQLException {
+        while (rs.next()) {
 
+            int id = rs.getInt(1);
+            String ticker = rs.getString(2);
+            double price = rs.getDouble(3);
+            System.out.println(id + " " + ticker + " " + price);
+
+// TODO: would be nice to have it generate a file instead of just writing to the commandline.
+
+        }
     }
 
-    private void writeData() {
-
+    private void writeData(PreparedStatement statement) throws SQLException {
+        statement.setString(1, "adsaf"); // set params based of what they are
+        statement.setDouble(2, 345.34); // set params based of what they are
+        statement.executeUpdate();
     }
 
     private Connection connectToDatabase() throws IOException, SQLException {
