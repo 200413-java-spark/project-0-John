@@ -4,25 +4,44 @@ import java.io.FileReader;
 import java.io.IOException;
 import java.sql.*;
 import java.util.Properties;
+import java.util.Scanner;
 
 public class Database {
 
 
-    public Database(String fileName) throws SQLException, IOException, ClassNotFoundException {
-        getSql("insert");
-        getSql("select");
+    public Database(String function) throws SQLException, IOException, ClassNotFoundException {
+        logic(function); // view || write || exit
     }
 
-    private void getSql(String method) throws IOException, SQLException, ClassNotFoundException {
+    private void logic(String function) throws SQLException, IOException, ClassNotFoundException {
+        if (function.equals("select")) {
+            //     view = will write or append data to a local file in storage // ask for data name
+            System.out.println("Which data do you want to select?");
+            Scanner scanner = new Scanner(System.in);  // Create a Scanner object
+            String fileName = scanner.nextLine();  // Read user input
+
+            getSql(function, fileName);
+        } else if(function.equals("insert")) {
+            //     write = will write data from file stored in storage // ask for file name
+            System.out.println("What's the name of your file?"); // file must be located in storage.
+            Scanner scanner = new Scanner(System.in);  // Create a Scanner object
+            String fileName = scanner.nextLine();  // Read user input
+
+            getSql(function, fileName);
+        }else if(function.equals("exit")) {
+            System.out.println("Exiting batch mode.");
+        }
+    }
+
+    private void getSql(String function, String fileName) throws IOException, SQLException, ClassNotFoundException {
 
         Connection conn = connectToDatabase();
 
 //      prepared statement setup
-        PreparedStatement statement = conn.prepareStatement(getStatement(method)); // input sql statement with ?
+        PreparedStatement statement = conn.prepareStatement(getStatement(function)); // input sql statement with ?
 
 //      Results set obj
-
-        if (method.equals("select")) {
+        if (function.equals("select")) {
             ResultSet rs = statement.executeQuery();
             readData(rs);
             rs.close(); // close connection

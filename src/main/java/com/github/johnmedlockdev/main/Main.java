@@ -23,14 +23,14 @@ public class Main {
                 data.logic();
 
             } else {
+                // need to refactor this
                 if (userInput.getMode().equals("exit")) {
                     break;
                 }
-                System.out.println("What's the name of the file you would like to input?");
+                System.out.println("What would you like to do with the database?");
                 Scanner scanner = new Scanner(System.in);  // Create a Scanner object
-                String fileName = scanner.nextLine();  // Read user input
-                Database dataDB = new Database(fileName);
-
+                String function = scanner.nextLine();  // Read user input
+                Database dataDB = new Database(function);
             }
 
         }
