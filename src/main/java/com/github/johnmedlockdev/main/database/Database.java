@@ -4,74 +4,115 @@ import java.io.FileReader;
 import java.io.IOException;
 import java.sql.*;
 import java.util.Properties;
+import java.util.Scanner;
 
 public class Database {
 
-    public Database(String fileName) throws SQLException, IOException, ClassNotFoundException {
-        getSql();
+    public Database(String function) throws SQLException, IOException, ClassNotFoundException {
+        logic(function); // view || write || exit
     }
 
-    private void getSql() throws IOException, SQLException, ClassNotFoundException {
+    // TODO: duplicate code
+    private void logic(String function) throws SQLException, IOException, ClassNotFoundException {
+        if (function.equals("select")) {
+            //     view = will write or append data to a local file in storage // ask for data name
+            System.out.println("Which data do you want to select?");
+            Scanner scanner = new Scanner(System.in);  // Create a Scanner object
+            String fileName = scanner.nextLine();  // Read user input
 
-        String propertiesFile = "src/main/java/com/github/johnmedlockdev/main/database/db.properties";
-        FileReader reader = new FileReader(propertiesFile);
+            getSql(function, fileName);
+        } else if (function.equals("insert")) {
+            //     write = will write data from file stored in storage // ask for file name
+            System.out.println("What's the name of your file?"); // file must be located in storage.
+            Scanner scanner = new Scanner(System.in);  // Create a Scanner object
+            String fileName = scanner.nextLine();  // Read user input
+
+            getSql(function, fileName);
+        } else if (function.equals("exit")) {
+            System.out.println("Exiting batch mode.");
+            //TODO: this needs to properly exit the loop
+        }
+    }
+
+    private void getSql(String function, String fileName) throws IOException, SQLException, ClassNotFoundException {
+
+        Connection conn = connectToDatabase();
+
+//      prepared statement setup
+        PreparedStatement statement = conn.prepareStatement(getStatement(function)); // input sql statement with ?
+
+//      Results set obj
+        if (function.equals("select")) {
+            ResultSet rs = statement.executeQuery();
+            readData(rs);
+            rs.close(); // close connection
+        } else {
+            writeData(statement);
+        }
+
+        statement.close(); // close connection
+        conn.close(); // close connection
+    }
+
+
+    private void readData(ResultSet rs) throws SQLException {
+        while (rs.next()) {
+
+            int id = rs.getInt(1);
+            String ticker = rs.getString(2);
+            double price = rs.getDouble(3);
+            System.out.println(id + " " + ticker + " " + price);
+
+// TODO: would be nice to have it generate a file instead of just writing to the commandline.
+
+        }
+    }
+
+    // TODO: make read from csv file
+    private void writeData(PreparedStatement statement) throws SQLException {
+        statement.setString(1, "adsaf"); // set params based of what they are
+        statement.setDouble(2, 345.34); // set params based of what they are
+        statement.executeUpdate();
+    }
+
+    private Connection connectToDatabase() throws IOException, SQLException {
+        String dbFile = "src/main/java/com/github/johnmedlockdev/main/database/db.properties";
+        FileReader reader = new FileReader(dbFile);
         Properties p = new Properties();
         p.load(reader);
 
-//      db connection setup
+        //      db connection setup
         String username = p.getProperty("username");
         String password = p.getProperty("password");
         String url = p.getProperty("url");
 
-//      prepared statement assignment
-        String selectAll = p.getProperty("selectAll");
-        String insertStatement = p.getProperty("insertStatement");
-
-////////////////////////////////////////////////////////////////////////////////
         Connection conn = DriverManager.getConnection(url, username, password);
-////////////////////////////////////////////////////////////////////////////////
 
-//      prepared statement setup
-        PreparedStatement stmt = conn.prepareStatement(insertStatement); // input sql statement with ?
-
-        stmt.setString(2,"spy"); // set params based of what they are
-        stmt.setDouble(3,54.34); // set params based of what they are
-
-//      Results set obj
-        ResultSet rs = stmt.executeQuery();
-
-//        rs.next(); // you have to do this to get off the headers
-//        System.out.println(rs.getInt(1)+" "+rs.getString(2) + " "+ rs.getDouble(3));
-
-        rs.close(); // close connection
-        stmt.close(); // close connection
-        conn.close(); // close connection
-
-//        prints query
-//        ResultSet resultSet = statement.executeQuery(getAll);
-//        ResultSetMetaData rsmd = resultSet.getMetaData();
-//        int columnsNumber = rsmd.getColumnCount();
-//        while (resultSet.next()) {
-//            for (int i = 1; i <= columnsNumber; i++) {
-//                if (i > 1) System.out.print(", ");
-//                String columnValue = resultSet.getString(i);
-//                System.out.print(columnValue + " " + rsmd.getColumnName(i));
-//            }
-//            System.out.println();
-//        }
-
-
-//        stuff to learn
-//        results.getString(arg) .getInt(arg) statement.execute() preparedstatement(statement) executeQuery
-//        System.out.println(rs.getMetaData()); => prints obj
-
+        return conn;
 
     }
 
-private void readData(){
+    // TODO: probably need to refactor the properties file.
+    private String getStatement(String method) throws IOException {
+        String preparedStatement = "";
+        String propertiesFile = "src/main/java/com/github/johnmedlockdev/main/database/statements.properties";
+        FileReader reader = new FileReader(propertiesFile);
+        Properties p = new Properties();
+        p.load(reader);
 
-}
-private void writeData(){
+        //      prepared statement assignment
+        if (method.equals("insert")) {
+            String insertStatement = p.getProperty("insertStatement");
+            preparedStatement = insertStatement;
 
-}
+        }
+        if (method.equals("select")) {
+            String selectAll = p.getProperty("selectAll");
+            preparedStatement = selectAll;
+        }
+
+        return preparedStatement;
+    }
+
+
 }
