@@ -1,7 +1,6 @@
 package com.github.johnmedlockdev.main.database;
 
-import java.io.FileReader;
-import java.io.IOException;
+import java.io.*;
 import java.sql.*;
 import java.util.Properties;
 import java.util.Scanner;
@@ -47,7 +46,7 @@ public class Database {
             readData(rs);
             rs.close(); // close connection
         } else {
-            writeData(statement);
+            writeData(statement, fileName);
         }
 
         statement.close(); // close connection
@@ -69,10 +68,24 @@ public class Database {
     }
 
     // TODO: make read from csv file
-    private void writeData(PreparedStatement statement) throws SQLException {
-        statement.setString(1, "adsaf"); // set params based of what they are
-        statement.setDouble(2, 345.34); // set params based of what they are
-        statement.executeUpdate();
+    private void writeData(PreparedStatement statement, String fileName) throws SQLException, IOException {
+        // for reading
+        String fileFullName;
+        File path;
+
+        fileFullName = new File("").getAbsolutePath() + "\\src\\main\\java\\com\\github\\johnmedlockdev\\main\\data\\storage\\" + fileName.toUpperCase() + ".csv";
+        path = new File(fileFullName);
+
+
+            BufferedReader br = new BufferedReader(new FileReader(fileFullName));
+            String line = "";
+            while ((line = br.readLine()) != null) {
+                statement.setString(1, fileName); // set params based of what they are
+                statement.setDouble(2, Double.parseDouble(line)); // set params based of what they are
+                statement.addBatch();
+            }
+
+        statement.executeBatch();
     }
 
     private Connection connectToDatabase() throws IOException, SQLException {
