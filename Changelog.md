@@ -7,14 +7,15 @@
 
 - batch insert now works properly
 - batch select now generates a file with the output
+- all user methods now conform to the database inputs.
 
 ## Version 0.2.4
 
 ### Added
 
 - batch mode read and writes without crashing.
-- seperated queries from db properties.
-- added logic gate for datbase object. 
+- separated queries from db properties.
+- added logic gate for database object. 
 
 ### Changed
 

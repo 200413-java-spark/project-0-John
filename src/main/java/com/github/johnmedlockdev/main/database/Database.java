@@ -3,7 +3,6 @@ package com.github.johnmedlockdev.main.database;
 import java.io.*;
 import java.sql.*;
 import java.util.Properties;
-import java.util.Random;
 import java.util.Scanner;
 
 public class Database {
@@ -63,9 +62,7 @@ public class Database {
         fileFullName = new File("").getAbsolutePath() + "\\src\\main\\java\\com\\github\\johnmedlockdev\\main\\data\\storage\\" + fileName.toUpperCase() + ".csv";
         path = new File(fileFullName);
 
-        if (!path.exists()) {
-            OutputStream outputStream = new FileOutputStream(path);
-        }
+        OutputStream outputStream = new FileOutputStream(path);
 
         while (rs.next()) {
 
@@ -80,10 +77,8 @@ public class Database {
             writer.newLine();
             writer.close();
         }
-        // TODO: would be nice to have it generate a file instead of just writing to the commandline. X
     }
 
-    // TODO: make read from csv file X
     private void writeData(PreparedStatement statement, String fileName) throws SQLException, IOException {
         // for reading
         String fileFullName;
@@ -93,13 +88,14 @@ public class Database {
         path = new File(fileFullName);
 
 
-            BufferedReader br = new BufferedReader(new FileReader(fileFullName));
-            String line = "";
-            while ((line = br.readLine()) != null) {
-                statement.setString(1, fileName); // set params based of what they are
-                statement.setDouble(2, Double.parseDouble(line)); // set params based of what they are
-                statement.addBatch();
-            }
+        BufferedReader br = new BufferedReader(new FileReader(fileFullName));
+        String line = "";
+        while ((line = br.readLine()) != null) {
+            String[] values = line.split("\\s*,\\s*");
+            statement.setString(1, values[0].toUpperCase()); // set params based of what they are
+            statement.setDouble(2, Double.parseDouble(values[1])); // set params based of what they are
+            statement.addBatch();
+        }
 
         statement.executeBatch();
     }

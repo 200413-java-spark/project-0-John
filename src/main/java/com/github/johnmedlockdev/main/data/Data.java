@@ -55,7 +55,7 @@ public class Data {
 
     //  methods
     public void getPrediction() {
-
+//todo refactor doesn't work
         try {
             // get user input to display which strategy they want.
             BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
@@ -100,11 +100,12 @@ public class Data {
     public void createInput() {
         try {
             String priceInput = Double.toString(this.price);
+            String newUserInput = ticker + "," + priceInput;
 
             writer = new BufferedWriter(
                     new FileWriter(this.fileFullName, true)
             );
-            writer.write(priceInput);
+            writer.write(newUserInput);
             writer.newLine();
             writer.close();
         } catch (IOException e) {
@@ -123,11 +124,12 @@ public class Data {
                 Random r = new Random(); // creating Random object
                 double randomValue = 1 + (10 - 1) * r.nextDouble();
                 String ranStr = String.format("%.2f", randomValue);
-
+                String ticker = "SPY";
+                String genInput = ticker + "," + ranStr;
                 writer = new BufferedWriter(
                         new FileWriter(fileFullName, true)
                 );
-                writer.write(ranStr);
+                writer.write(genInput);
                 writer.newLine();
                 writer.close();
             }

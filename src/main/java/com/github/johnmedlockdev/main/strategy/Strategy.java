@@ -17,6 +17,7 @@ public class Strategy implements StrategyTemplate {
         this.fileFullName = data.getFileFullName();
     }
 
+    //todo refactor doesn't work
     @Override
     public double[] processData() {
 
