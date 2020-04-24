@@ -7,7 +7,6 @@ import org.junit.Before;
 import org.junit.Test;
 
 import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertTrue;
 
 public class MainTest {
 
@@ -23,7 +22,7 @@ public class MainTest {
     }
 
     @Test
-    public void methodIsNew(){
+    public void methodIsNew() {
         String[] args = {"new", "appl", "25"};
         ParseInput userInput = new ParseInput(args);
 
@@ -36,7 +35,7 @@ public class MainTest {
     }
 
     @Test
-    public void filePathIs(){
+    public void filePathIs() {
         String[] args = {"new", "appl", "25"};
         ParseInput userInput = new ParseInput(args);
 

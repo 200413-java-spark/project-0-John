@@ -5,8 +5,8 @@ import com.github.johnmedlockdev.main.parse.ParseInput;
 import java.io.File;
 
 public class FileInfo {
-    private String fileFullName;
-    private File path;
+    private final String fileFullName;
+    private final File path;
 
     public FileInfo(ParseInput userInput) {
         fileFullName = new File("").getAbsolutePath() + "\\src\\main\\java\\com\\github\\johnmedlockdev\\main\\data\\storage\\" + userInput.getTicker() + ".csv";

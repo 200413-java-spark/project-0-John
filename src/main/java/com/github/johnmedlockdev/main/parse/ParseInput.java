@@ -28,7 +28,7 @@ public class ParseInput {
         return mode;
     }
 
-    private void ParseLogic(String... args){
+    private void ParseLogic(String... args) {
         if (args.length == 1) {
             this.mode = args[0]; // batch
         } else {
