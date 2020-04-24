@@ -1,43 +1,28 @@
 package com.github.johnmedlockdev.main;
 
-import com.github.johnmedlockdev.main.data.Data;
-import com.github.johnmedlockdev.main.database.Database;
-import com.github.johnmedlockdev.main.file.FileInfo;
-import com.github.johnmedlockdev.main.parse.ParseInput;
+import com.github.johnmedlockdev.main.modes.BatchMode;
+import com.github.johnmedlockdev.main.modes.ManualMode;
+import com.github.johnmedlockdev.main.parse.ParseMode;
 
 import java.io.IOException;
 import java.sql.SQLException;
-import java.util.Scanner;
 
 public class Main {
     public static void main(String... args) throws SQLException, IOException, ClassNotFoundException {
 
-        // TODO: I'd like to refactor all this into a one liner. ^ deal with errors with proper blocks.
-//        while (true) {
-        ParseInput userInput = new ParseInput(args);
+        ParseMode parseMode = new ParseMode(args);
 
-        if (userInput.getMode().equals("")) {
+        if (parseMode.getMode().equals("Manual")) {
+            ManualMode manualMode = new ManualMode();
+            manualMode.gatherInput();
 
-            FileInfo fileInfo = new FileInfo(userInput);
-            Data data = new Data(userInput, fileInfo);
-
-            data.logic();
-
-        } else {
-            // need to refactor this
-            if (userInput.getMode().equals("exit")) {
-//                    break; // commented out while loop
-                //TODO: this needs to properly exit the loop
-            }
-            System.out.println("What would you like to do with the database?");
-            Scanner scanner = new Scanner(System.in);  // Create a Scanner object
-            String function = scanner.nextLine();  // Read user input
-            Database dataDB = new Database(function);
+        } else if (parseMode.getMode().equals("Batch")) {
+            BatchMode batchMode = new BatchMode();
+            batchMode.gatherInput();
         }
 
     }
 }
-//}
 
 // Desired output:
 // 1. feed in SPY data

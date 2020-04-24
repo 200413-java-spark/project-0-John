@@ -1,57 +1,18 @@
 package com.github.johnmedlockdev.main.data;
 
-import com.github.johnmedlockdev.main.file.FileInfo;
-import com.github.johnmedlockdev.main.parse.ParseInput;
-import com.github.johnmedlockdev.main.strategy.Strategy;
-import com.github.johnmedlockdev.main.strategy.strategies.test;
-import com.github.johnmedlockdev.main.strategy.strategies.test1;
-import com.github.johnmedlockdev.main.strategy.strategies.test2;
+import com.github.johnmedlockdev.main.strategy.interfaces.Strategy;
+import com.github.johnmedlockdev.main.strategy.test;
+import com.github.johnmedlockdev.main.strategy.test1;
+import com.github.johnmedlockdev.main.strategy.test2;
 
-import java.io.*;
-import java.util.Random;
+import java.io.BufferedReader;
+import java.io.BufferedWriter;
+import java.io.IOException;
+import java.io.InputStreamReader;
 
 public class Data {
-    //instance variables
-    private final String ticker;
-    private final String method;
-    private final String fileFullName;
-    private final File path;
-    private double price;
 
     private BufferedWriter writer;
-
-
-    // constructors
-    public Data(ParseInput userInput, FileInfo fileInfo) {
-        this.ticker = userInput.getTicker();
-        this.price = userInput.getPrice();
-        this.method = userInput.getMethod();
-        this.fileFullName = fileInfo.getFileFullName();
-        this.path = fileInfo.getPath();
-    }
-
-    // getters
-    public String getTicker() {
-        return this.ticker;
-    }
-
-    public double getPrice() {
-        return this.price;
-    }
-
-    // setters
-    public void setPrice(double price) {
-        this.price = price;
-    }
-
-    public String getFileFullName() {
-        return this.fileFullName;
-    }
-
-    public String getMethod() {
-        return this.method;
-    }
-
 
     //  methods
     public void getPrediction() {
@@ -82,63 +43,6 @@ public class Data {
         } catch (IOException e) {
             System.out.println("Completed!");
         }
-
-    }
-
-
-    public void createFile() {
-        try {
-            if (!path.exists()) {
-                OutputStream outputStream = new FileOutputStream(this.path);
-            }
-            createInput();
-        } catch (IOException e) {
-            System.out.println("Completed!");
-        }
-    }
-
-    public void createInput() {
-        try {
-            String priceInput = Double.toString(this.price);
-            String newUserInput = ticker + "," + priceInput;
-
-            writer = new BufferedWriter(
-                    new FileWriter(this.fileFullName, true)
-            );
-            writer.write(newUserInput);
-            writer.newLine();
-            writer.close();
-        } catch (IOException e) {
-            System.out.println("Completed!");
-        }
-    }
-
-    public void generate() {
-        try {
-
-            if (!path.exists()) {
-                OutputStream outputStream = new FileOutputStream(this.path);
-            }
-
-            for (int i = 0; i < 200; i++) {
-                Random r = new Random(); // creating Random object
-                double randomValue = 1 + (10 - 1) * r.nextDouble();
-                String ranStr = String.format("%.2f", randomValue);
-                String ticker = "SPY";
-                String genInput = ticker + "," + ranStr;
-                writer = new BufferedWriter(
-                        new FileWriter(fileFullName, true)
-                );
-                writer.write(genInput);
-                writer.newLine();
-                writer.close();
-            }
-
-        } catch (IOException e) {
-            System.out.println("Completed!");
-        }
-
-    }
 
     public void logic() {
         switch (getMethod()) {

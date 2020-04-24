@@ -1,7 +1,7 @@
-package com.github.johnmedlockdev.main.strategy.strategies;
+package com.github.johnmedlockdev.main.strategy;
 
 import com.github.johnmedlockdev.main.data.Data;
-import com.github.johnmedlockdev.main.strategy.Strategy;
+import com.github.johnmedlockdev.main.strategy.interfaces.Strategy;
 
 import java.util.Arrays;
 

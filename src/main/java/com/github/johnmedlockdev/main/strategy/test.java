@@ -1,14 +1,14 @@
-package com.github.johnmedlockdev.main.strategy.strategies;
+package com.github.johnmedlockdev.main.strategy;
 
 import com.github.johnmedlockdev.main.data.Data;
-import com.github.johnmedlockdev.main.strategy.Strategy;
+import com.github.johnmedlockdev.main.strategy.interfaces.Strategy;
 
 import java.util.Arrays;
 
-public class test2 extends Strategy {
+public class test extends Strategy {
     double[] values = super.processData();
 
-    public test2(Data data) {
+    public test(Data data) {
         super(data);
 
     }
@@ -16,6 +16,7 @@ public class test2 extends Strategy {
 
     public void advise() {
         System.out.println(Arrays.toString(values));
+
     }
 }
 

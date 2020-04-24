@@ -1,4 +1,4 @@
-package com.github.johnmedlockdev.main.strategy;
+package com.github.johnmedlockdev.main.strategy.interfaces;
 
 import com.github.johnmedlockdev.main.data.Data;
 

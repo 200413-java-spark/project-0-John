@@ -1,8 +1,6 @@
 package com.github.johnmedlockdev.main;
 
 import com.github.johnmedlockdev.main.data.Data;
-import com.github.johnmedlockdev.main.file.FileInfo;
-import com.github.johnmedlockdev.main.parse.ParseInput;
 import org.junit.Before;
 import org.junit.Test;
 
