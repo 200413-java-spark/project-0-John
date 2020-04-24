@@ -1,4 +1,12 @@
 # Changelog
+## Version 1.0.0
+
+### Added
+
+### Changed
+
+- batch insert now works properly
+- batch select now generates a file with the output
 
 ## Version 0.2.4
 

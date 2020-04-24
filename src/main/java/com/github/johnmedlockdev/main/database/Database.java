@@ -3,6 +3,7 @@ package com.github.johnmedlockdev.main.database;
 import java.io.*;
 import java.sql.*;
 import java.util.Properties;
+import java.util.Random;
 import java.util.Scanner;
 
 public class Database {
@@ -43,7 +44,7 @@ public class Database {
 //      Results set obj
         if (function.equals("select")) {
             ResultSet rs = statement.executeQuery();
-            readData(rs);
+            readData(rs, fileName);
             rs.close(); // close connection
         } else {
             writeData(statement, fileName);
@@ -54,20 +55,35 @@ public class Database {
     }
 
 
-    private void readData(ResultSet rs) throws SQLException {
+    private void readData(ResultSet rs, String fileName) throws SQLException, IOException {
+
+        String fileFullName;
+        File path;
+
+        fileFullName = new File("").getAbsolutePath() + "\\src\\main\\java\\com\\github\\johnmedlockdev\\main\\data\\storage\\" + fileName.toUpperCase() + ".csv";
+        path = new File(fileFullName);
+
+        if (!path.exists()) {
+            OutputStream outputStream = new FileOutputStream(path);
+        }
+
         while (rs.next()) {
 
-            int id = rs.getInt(1);
             String ticker = rs.getString(2);
             double price = rs.getDouble(3);
-            System.out.println(id + " " + ticker + " " + price);
+            String output = ticker + "," + price;
 
-// TODO: would be nice to have it generate a file instead of just writing to the commandline.
-
+            BufferedWriter writer = new BufferedWriter(
+                    new FileWriter(fileFullName, true)
+            );
+            writer.write(output);
+            writer.newLine();
+            writer.close();
         }
+        // TODO: would be nice to have it generate a file instead of just writing to the commandline. X
     }
 
-    // TODO: make read from csv file
+    // TODO: make read from csv file X
     private void writeData(PreparedStatement statement, String fileName) throws SQLException, IOException {
         // for reading
         String fileFullName;
