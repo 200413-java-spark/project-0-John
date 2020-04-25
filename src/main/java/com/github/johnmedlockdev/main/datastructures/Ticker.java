@@ -3,17 +3,19 @@ package com.github.johnmedlockdev.main.datastructures;
 import java.io.*;
 import java.util.Random;
 
-public class Ticker extends FileStructure {
+public class Ticker extends User {
     private BufferedWriter bw;
+    private final FileStructure symbolFile;
 
-    public Ticker(String symbol) {
-        super(symbol);
+    public Ticker(String symbol, String price) {
+        super(symbol,price);
+        symbolFile = new FileStructure(symbol);
     }
 
     public void createFile() {
         try {
-            if (!super.getPath().exists()) {
-                OutputStream outputStream = new FileOutputStream(super.getPath());
+            if (!symbolFile.getPath().exists()) {
+                OutputStream outputStream = new FileOutputStream(symbolFile.getPath());
             }
             createInput();
         } catch (IOException e) {
@@ -27,7 +29,7 @@ public class Ticker extends FileStructure {
             String newUserInput = super.getSymbol() + "," + priceInput;
 
             bw = new BufferedWriter(
-                    new FileWriter(this.getAbsolutePathStr(), true)
+                    new FileWriter(symbolFile.getAbsolutePathStr(), true)
             );
             bw.write(newUserInput);
             bw.newLine();
@@ -40,8 +42,8 @@ public class Ticker extends FileStructure {
     public void generate() {
         try {
 
-            if (!super.getPath().exists()) {
-                OutputStream outputStream = new FileOutputStream(super.getPath());
+            if (!symbolFile.getPath().exists()) {
+                OutputStream outputStream = new FileOutputStream(symbolFile.getPath());
             }
 
             for (int i = 0; i < 200; i++) {
@@ -51,7 +53,7 @@ public class Ticker extends FileStructure {
                 String ticker = "SPY";
                 String genInput = ticker + "," + ranStr;
                 bw = new BufferedWriter(
-                        new FileWriter(this.getAbsolutePathStr(), true)
+                        new FileWriter(symbolFile.getAbsolutePathStr(), true)
                 );
                 bw.write(genInput);
                 bw.newLine();

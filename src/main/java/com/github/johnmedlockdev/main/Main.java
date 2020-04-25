@@ -1,26 +1,10 @@
 package com.github.johnmedlockdev.main;
 
-import com.github.johnmedlockdev.main.modes.BatchMode;
-import com.github.johnmedlockdev.main.modes.ManualMode;
-import com.github.johnmedlockdev.main.parse.ParseMode;
-
-import java.io.IOException;
-import java.sql.SQLException;
+import com.github.johnmedlockdev.main.routes.Init;
 
 public class Main {
-    public static void main(String... args) throws SQLException, IOException, ClassNotFoundException {
-
-        ParseMode parseMode = new ParseMode(args);
-
-        if (parseMode.getMode().equals("Manual")) {
-            ManualMode manualMode = new ManualMode();
-            manualMode.gatherInput();
-
-        } else if (parseMode.getMode().equals("Batch")) {
-            BatchMode batchMode = new BatchMode();
-            batchMode.gatherInput();
-        }
-
+    public static void main(String... args) {
+        Init init = new Init(args);
     }
 }
 
