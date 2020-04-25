@@ -18,6 +18,7 @@
 - mode factory
 - strategy factory
 - added user guidance prompts
+- Added Moving average Strategy
 
 ### Changed
 

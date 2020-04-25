@@ -1,6 +1,6 @@
 .idea
 .project
 .classpath
-src/main/java/com/github/johnmedlockdev/main/data/storage/*.csv
+src/main/java/com/github/johnmedlockdev/main/data/*.csv
 src/main/java/com/github/johnmedlockdev/main/configurations/*.properties
 target/
