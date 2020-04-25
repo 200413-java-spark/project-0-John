@@ -30,7 +30,7 @@ public class AdviseMode implements ModeInterface {
                 strategy = new MovingAverage(symbol);
                 break;
             default:
-                System.out.printf("This Program doesn't currently support indicator=%s",indicator);
+                System.out.printf("This Program doesn't currently support indicator=%s", indicator);
         }
         assert strategy != null;
         strategy.advise();

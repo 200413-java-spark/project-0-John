@@ -35,6 +35,7 @@
 - fileInfo class - replaced by fileStructure agent
 - storage file - removed now data is a dedicated storage space.
 - all test Strategies - removed placeholder data.
+- removed future.txt
 
 ## Version 1.0.0
 

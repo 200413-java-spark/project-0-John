@@ -1,8 +1,0 @@
-change catch blocks to log to log.
-
-change test strategies to real strategies.
-
-
-
-mvn clean compile exec:java;
-mvn exec:java -Dexec.args-"[operands]"
