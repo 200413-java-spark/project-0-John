@@ -1,6 +1,5 @@
 package com.github.johnmedlockdev.main;
 
-import com.github.johnmedlockdev.main.data.Data;
 import org.junit.Before;
 import org.junit.Test;
 
@@ -19,32 +18,32 @@ public class MainTest {
 
     }
 
-    @Test
-    public void methodIsNew() {
-        String[] args = {"new", "appl", "25"};
-        ParseInput userInput = new ParseInput(args);
+//    @Test
+//    public void methodIsNew() {
+//        String[] args = {"new", "appl", "25"};
+//        ParseInput userInput = new ParseInput(args);
+//
+//        FileInfo fileInfo = new FileInfo(userInput);
+//        Data data = new Data(userInput, fileInfo);
+//        String expected = "new";
+//        String actual = data.getMethod();
+//
+//        assertEquals(expected, actual);
+//    }
 
-        FileInfo fileInfo = new FileInfo(userInput);
-        Data data = new Data(userInput, fileInfo);
-        String expected = "new";
-        String actual = data.getMethod();
-
-        assertEquals(expected, actual);
-    }
-
-    @Test
-    public void filePathIs() {
-        String[] args = {"new", "appl", "25"};
-        ParseInput userInput = new ParseInput(args);
-
-        FileInfo fileInfo = new FileInfo(userInput);
-        Data data = new Data(userInput, fileInfo);
-        System.out.println();
-        String expected = "C:\\Users\\johnm\\IdeaProjects\\project-0-John\\src\\main\\java\\com\\github\\johnmedlockdev\\main\\data\\storage\\APPL.csv";
-        String actual = data.getFileFullName();
-
-        assertEquals(expected, actual);
-    }
+//    @Test
+//    public void filePathIs() {
+//        String[] args = {"new", "appl", "25"};
+//        ParseInput userInput = new ParseInput(args);
+//
+//        FileInfo fileInfo = new FileInfo(userInput);
+//        Data data = new Data(userInput, fileInfo);
+//        System.out.println();
+//        String expected = "C:\\Users\\johnm\\IdeaProjects\\project-0-John\\src\\main\\java\\com\\github\\johnmedlockdev\\main\\data\\storage\\APPL.csv";
+//        String actual = data.getFileFullName();
+//
+//        assertEquals(expected, actual);
+//    }
 
 //
 //    @Test

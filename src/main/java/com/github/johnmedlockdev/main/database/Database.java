@@ -1,35 +1,48 @@
 package com.github.johnmedlockdev.main.database;
 
+import com.github.johnmedlockdev.main.datastructures.FileStructure;
+
 import java.io.*;
 import java.sql.*;
 import java.util.Properties;
 import java.util.Scanner;
 
 public class Database {
+    private final String symbol;
+    private final FileStructure fileSymbol;
+    private File path;
 
-    public Database(String function) throws SQLException, IOException, ClassNotFoundException {
-        logic(function); // view || write || exit
+    public Database(String function, String symbol) {
+        this.symbol = symbol;
+        this.fileSymbol = new FileStructure(symbol);
+        logic(function); // select || insert
     }
 
-    // TODO: duplicate code
-    private void logic(String function) throws SQLException, IOException, ClassNotFoundException {
+// todo handle errors with logging
+
+    private void logic(String function) {
         if (function.equals("select")) {
-            //     view = will write or append data to a local file in storage // ask for data name
-            System.out.println("Which data do you want to select?");
-            Scanner scanner = new Scanner(System.in);  // Create a Scanner object
-            String fileName = scanner.nextLine();  // Read user input
-
-            getSql(function, fileName);
+            try {
+                getSql(function, symbol);
+            } catch (IOException ioException) {
+                ioException.printStackTrace();
+            } catch (SQLException throwables) {
+                throwables.printStackTrace();
+            } catch (ClassNotFoundException e) {
+                e.printStackTrace();
+            }
         } else if (function.equals("insert")) {
-            //     write = will write data from file stored in storage // ask for file name
-            System.out.println("What's the name of your file?"); // file must be located in storage.
-            Scanner scanner = new Scanner(System.in);  // Create a Scanner object
-            String fileName = scanner.nextLine();  // Read user input
-
-            getSql(function, fileName);
-        } else if (function.equals("exit")) {
-            System.out.println("Exiting batch mode.");
-            //TODO: this needs to properly exit the loop
+            try {
+                getSql(function, symbol);
+            } catch (IOException ioException) {
+                ioException.printStackTrace();
+            } catch (SQLException throwables) {
+                throwables.printStackTrace();
+            } catch (ClassNotFoundException e) {
+                e.printStackTrace();
+            }
+        } else  {
+            System.out.println("Invalid function Exiting batch mode.");
         }
     }
 
@@ -48,19 +61,13 @@ public class Database {
         } else {
             writeData(statement, fileName);
         }
-
         statement.close(); // close connection
         conn.close(); // close connection
     }
 
 
     private void readData(ResultSet rs, String fileName) throws SQLException, IOException {
-
-        String fileFullName;
-        File path;
-
-        fileFullName = new File("").getAbsolutePath() + "\\src\\main\\java\\com\\github\\johnmedlockdev\\main\\data\\storage\\" + fileName.toUpperCase() + ".csv";
-        path = new File(fileFullName);
+        path = new File(fileSymbol.getAbsolutePathStr());
 
         OutputStream outputStream = new FileOutputStream(path);
 
@@ -71,7 +78,7 @@ public class Database {
             String output = ticker + "," + price;
 
             BufferedWriter writer = new BufferedWriter(
-                    new FileWriter(fileFullName, true)
+                    new FileWriter(fileSymbol.getAbsolutePathStr(), true)
             );
             writer.write(output);
             writer.newLine();
@@ -81,14 +88,9 @@ public class Database {
 
     private void writeData(PreparedStatement statement, String fileName) throws SQLException, IOException {
         // for reading
-        String fileFullName;
-        File path;
+        path = new File(fileSymbol.getAbsolutePathStr());
 
-        fileFullName = new File("").getAbsolutePath() + "\\src\\main\\java\\com\\github\\johnmedlockdev\\main\\data\\storage\\" + fileName.toUpperCase() + ".csv";
-        path = new File(fileFullName);
-
-
-        BufferedReader br = new BufferedReader(new FileReader(fileFullName));
+        BufferedReader br = new BufferedReader(new FileReader(fileSymbol.getAbsolutePathStr()));
         String line = "";
         while ((line = br.readLine()) != null) {
             String[] values = line.split("\\s*,\\s*");
@@ -111,9 +113,7 @@ public class Database {
         String password = p.getProperty("password");
         String url = p.getProperty("url");
 
-        Connection conn = DriverManager.getConnection(url, username, password);
-
-        return conn;
+        return DriverManager.getConnection(url, username, password);
 
     }
 
@@ -127,13 +127,11 @@ public class Database {
 
         //      prepared statement assignment
         if (method.equals("insert")) {
-            String insertStatement = p.getProperty("insertStatement");
-            preparedStatement = insertStatement;
+            preparedStatement = p.getProperty("insertStatement");
 
         }
         if (method.equals("select")) {
-            String selectAll = p.getProperty("selectAll");
-            preparedStatement = selectAll;
+            preparedStatement = p.getProperty("selectAll");
         }
 
         return preparedStatement;

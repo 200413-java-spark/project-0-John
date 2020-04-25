@@ -1,7 +1,6 @@
 package com.github.johnmedlockdev.main.modes;
 
 import com.github.johnmedlockdev.main.datastructures.Ticker;
-import com.github.johnmedlockdev.main.datastructures.User;
 import com.github.johnmedlockdev.main.modes.interfaces.Mode;
 
 import java.util.Scanner;
@@ -20,6 +19,7 @@ public class ManualMode implements Mode {
         String price = scanner.nextLine();
 
         Ticker ticker = new Ticker(symbol, price);
+        ticker.createFile();
     }
 
 }

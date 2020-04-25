@@ -11,14 +11,15 @@ public class BatchMode implements Mode {
 
     @Override
     public void gatherInput() {
-        System.out.println("What would you like to do with the database?");
         Scanner scanner = new Scanner(System.in);  // Create a Scanner object
+
+        System.out.println("What would you like to do with the database?");
         String function = scanner.nextLine();  // Read user input
-        try {
-            Database dataDB = new Database(function);
-        } catch (SQLException | ClassNotFoundException | IOException horribles) {
-            horribles.printStackTrace();
-        }
+
+        System.out.println("Which Symbol?");
+        String symbol = scanner.nextLine();  // Read user input
+
+        Database dataDB = new Database(function,symbol);
     }
 
 }
