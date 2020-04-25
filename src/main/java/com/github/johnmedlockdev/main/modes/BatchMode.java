@@ -18,6 +18,7 @@ public class BatchMode implements ModeInterface {
         String symbol = scanner.nextLine();
 
         new Database(function, symbol);
+        ModeInterface.startOver();
     }
 
 }

@@ -15,7 +15,12 @@ public class GenerateMode implements ModeInterface {
         System.out.println("What is the Ticker?");
         String symbol = scanner.nextLine();
 
-        Demo demo = new Demo(symbol);
-        demo.generate();
+        System.out.println("How Many Inputs?");
+        String numberOfInputs = scanner.nextLine();
+
+        new Demo(symbol, numberOfInputs).generate();
+
+        ModeInterface.startOver();
+        scanner.close();
     }
 }

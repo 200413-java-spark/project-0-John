@@ -8,7 +8,6 @@ Use at your own discretion.
 
 ## Examples
 
-
 > new appl  25
 
 Creates new Csv with input

@@ -34,5 +34,6 @@ public class AdviseMode implements ModeInterface {
         }
         assert strategy != null;
         strategy.advise();
+        ModeInterface.startOver();
     }
 }

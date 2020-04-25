@@ -6,19 +6,24 @@ import com.github.johnmedlockdev.main.modes.GenerateMode;
 import com.github.johnmedlockdev.main.modes.ManualMode;
 import com.github.johnmedlockdev.main.modes.interfaces.ModeInterface;
 
+import java.util.Scanner;
+
 public class Init {
+
 
     public Init(String[] args) {
         String selection = args[0];
-        System.out.println("Select Mode:");
-        System.out.println("Manual : M || Batch : B || Generate : G || Advise : A");
+        System.out.println("Select Mode: Manual : M || Batch : B || Generate : G || Advise : A || Exit : E");
         modeFactory(selection);
     }
 
     private void modeFactory(String selection) {
+        ModeInterface mode = null;
         selection = capitalizeInput(selection);
-        ModeInterface mode;
-
+        if (selection.equals("Exit") || selection.equals("E")) {
+            System.out.println("Exiting Program");
+            System.exit(1);
+        }
         switch (selection) {
             case "Manual":
             case "M":
@@ -37,7 +42,14 @@ public class Init {
                 mode = new AdviseMode();
                 break;
             default:
-                throw new IllegalStateException("Unexpected value: " + selection);
+                Scanner scanner = new Scanner(System.in);
+                System.out.println("Invalid input! Select a valid mode.");
+                String[] input = {scanner.nextLine()};
+                new Init(input);
+                scanner.close();
+        }
+        if (mode == null) {
+            System.exit(1);
         }
         mode.gatherInput();
     }

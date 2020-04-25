@@ -4,36 +4,37 @@
 
 ### Added
 
-- init class
-- modeInterface
-- StrategyInterface
-- BatchMode class
-- GenerateMode class
-- ManualMode class
-- AdviseMode class
-- Demo class
-- FileStructure class
-- Ticker class
-- User class
-- mode factory
-- strategy factory
-- added user guidance prompts
-- Added Moving average Strategy
+- init class - init object.
+- modeInterface - blueprint for all modes.
+- StrategyInterface - blueprint for all strategies.
+- BatchMode class - allows for user to update and download data to csv.
+- GenerateMode class - generates user determined number of inputs of specified ticker.
+- ManualMode class - manual inputs ticker inputs.
+- AdviseMode class - advises based of specified strategy.
+- Demo class - agent for generate mode.
+- FileStructure class - agent for file creation.
+- Ticker class - agent for ticker info.
+- User class - abstract for filestructure and ticker agents.
+- mode factory - reduces code mode object creation.
+- strategy factory - reduces code factory object creation.
+- added user guidance prompts - program now prompts user with valid inputs.
+- Added Moving average Strategy - based off of user inputs for tickers it prompts market conditions.
 
 ### Changed
 
-- refactored cli flags into modes for batch, generate, manual, and prediction
-- refactored strategies to use collections api
+- refactored cli flags into modes for batch, generate, manual, and prediction.
+- refactored strategies to use collections api.
 - data file now just stores csv files.
 - moved properties files to configurations folder.
+- created a loop for inputs until user exits the program.
 
 ### Removed
 
-- data class
-- parseInput class
-- fileInfo class
-- storage file
-- all test Strategies
+- data class - broke up in multiple classes
+- parseInput class - used factory instead 
+- fileInfo class - replaced by fileStructure agent
+- storage file - removed now data is a dedicated storage space.
+- all test Strategies - removed placeholder data.
 
 ## Version 1.0.0
 
@@ -102,7 +103,7 @@
 
 ## Version 0.1.2
 
-### Added
+.### Added
 - created class FileInfo to abstract away the file creation from main method.
 - created class ParseInput to abstract away the parsing from main method.
 - created an interface for strategies 

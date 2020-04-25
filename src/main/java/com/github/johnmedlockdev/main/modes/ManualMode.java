@@ -20,6 +20,7 @@ public class ManualMode implements ModeInterface {
 
         Ticker ticker = new Ticker(symbol, price);
         ticker.createFile();
+        ModeInterface.startOver();
     }
 
 }
