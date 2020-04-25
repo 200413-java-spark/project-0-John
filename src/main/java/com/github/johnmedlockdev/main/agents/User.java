@@ -1,4 +1,4 @@
-package com.github.johnmedlockdev.main.datastructures;
+package com.github.johnmedlockdev.main.agents;
 
 public class User {
     protected final String symbol;

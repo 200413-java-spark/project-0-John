@@ -1,11 +1,10 @@
 package com.github.johnmedlockdev.main.database;
 
-import com.github.johnmedlockdev.main.datastructures.FileStructure;
+import com.github.johnmedlockdev.main.agents.FileStructure;
 
 import java.io.*;
 import java.sql.*;
 import java.util.Properties;
-import java.util.Scanner;
 
 public class Database {
     private final String symbol;
@@ -41,7 +40,7 @@ public class Database {
             } catch (ClassNotFoundException e) {
                 e.printStackTrace();
             }
-        } else  {
+        } else {
             System.out.println("Invalid function Exiting batch mode.");
         }
     }
@@ -64,7 +63,6 @@ public class Database {
         statement.close(); // close connection
         conn.close(); // close connection
     }
-
 
     private void readData(ResultSet rs, String fileName) throws SQLException, IOException {
         path = new File(fileSymbol.getAbsolutePathStr());
@@ -103,7 +101,7 @@ public class Database {
     }
 
     private Connection connectToDatabase() throws IOException, SQLException {
-        String dbFile = "src/main/java/com/github/johnmedlockdev/main/database/db.properties";
+        String dbFile = "src/main/java/com/github/johnmedlockdev/main/configurations/db.properties";
         FileReader reader = new FileReader(dbFile);
         Properties p = new Properties();
         p.load(reader);
@@ -117,10 +115,9 @@ public class Database {
 
     }
 
-    // TODO: probably need to refactor the properties file.
     private String getStatement(String method) throws IOException {
         String preparedStatement = "";
-        String propertiesFile = "src/main/java/com/github/johnmedlockdev/main/database/statements.properties";
+        String propertiesFile = "src/main/java/com/github/johnmedlockdev/main/configurations/statements.properties";
         FileReader reader = new FileReader(propertiesFile);
         Properties p = new Properties();
         p.load(reader);

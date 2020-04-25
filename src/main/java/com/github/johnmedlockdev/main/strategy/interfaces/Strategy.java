@@ -1,6 +1,6 @@
 package com.github.johnmedlockdev.main.strategy.interfaces;
 
-import com.github.johnmedlockdev.main.datastructures.FileStructure;
+import com.github.johnmedlockdev.main.agents.FileStructure;
 
 import java.io.BufferedReader;
 import java.io.BufferedWriter;

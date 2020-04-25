@@ -1,4 +1,4 @@
-package com.github.johnmedlockdev.main.datastructures;
+package com.github.johnmedlockdev.main.agents;
 
 import java.io.*;
 import java.util.Random;

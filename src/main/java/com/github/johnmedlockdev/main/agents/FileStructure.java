@@ -1,4 +1,4 @@
-package com.github.johnmedlockdev.main.datastructures;
+package com.github.johnmedlockdev.main.agents;
 
 import java.io.File;
 
@@ -22,3 +22,4 @@ public class FileStructure extends User {
     }
 
 }
+

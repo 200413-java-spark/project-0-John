@@ -8,13 +8,12 @@ import java.util.Scanner;
 public class PredictMode implements Mode {
     @Override
     public void gatherInput() {
+        Scanner scanner = new Scanner(System.in);
 
         System.out.println("What symbol?");
-        Scanner scanner = new Scanner(System.in);
         String symbol = scanner.nextLine();
 
         System.out.println("What Strategy?");
-        scanner = new Scanner(System.in);
         String strategy = scanner.nextLine();
 
         Strategy strat = new Strategy(symbol, strategy);
