@@ -1,11 +1,11 @@
 package com.github.johnmedlockdev.main.modes;
 
 import com.github.johnmedlockdev.main.agents.Ticker;
-import com.github.johnmedlockdev.main.modes.interfaces.Mode;
+import com.github.johnmedlockdev.main.modes.interfaces.ModeInterface;
 
 import java.util.Scanner;
 
-public class ManualMode implements Mode {
+public class ManualMode implements ModeInterface {
 
     @Override
     public void gatherInput() {

@@ -1,11 +1,12 @@
 package com.github.johnmedlockdev.main.modes;
 
 import com.github.johnmedlockdev.main.agents.Demo;
-import com.github.johnmedlockdev.main.modes.interfaces.Mode;
+import com.github.johnmedlockdev.main.modes.interfaces.ModeInterface;
 
 import java.util.Scanner;
 
-public class GenerateMode implements Mode {
+public class GenerateMode implements ModeInterface {
+
     @Override
     public void gatherInput() {
 
@@ -15,6 +16,6 @@ public class GenerateMode implements Mode {
         String symbol = scanner.nextLine();
 
         Demo demo = new Demo(symbol);
-
+        demo.generate();
     }
 }

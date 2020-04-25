@@ -6,7 +6,6 @@ import java.util.Random;
 public class Demo {
     private final FileStructure fileSymbol;
     private final String symbol;
-    BufferedWriter bw;
 
     public Demo(String symbol) {
         this.symbol = symbol;
@@ -24,8 +23,8 @@ public class Demo {
                 Random r = new Random();
                 double randomValue = 1 + (10 - 1) * r.nextDouble();
                 String ranStr = String.format("%.2f", randomValue);
-                String genInput = symbol + "," + ranStr;
-                bw = new BufferedWriter(
+                String genInput = symbol.toUpperCase() + "," + ranStr;
+                BufferedWriter bw = new BufferedWriter(
                         new FileWriter(fileSymbol.getAbsolutePathStr(), true)
                 );
                 bw.write(genInput);

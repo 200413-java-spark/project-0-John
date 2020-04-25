@@ -1,4 +1,39 @@
 # Changelog
+
+## Version 1.0.1
+
+### Added
+
+- init class
+- modeInterface
+- StrategyInterface
+- BatchMode class
+- GenerateMode class
+- ManualMode class
+- AdviseMode class
+- Demo class
+- FileStructure class
+- Ticker class
+- User class
+- mode factory
+- strategy factory
+- added user guidance prompts
+
+### Changed
+
+- refactored cli flags into modes for batch, generate, manual, and prediction
+- refactored strategies to use collections api
+- data file now just stores csv files.
+- moved properties files to configurations folder.
+
+### Removed
+
+- data class
+- parseInput class
+- fileInfo class
+- storage file
+- all test Strategies
+
 ## Version 1.0.0
 
 ### Added

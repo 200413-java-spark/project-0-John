@@ -1,6 +1,6 @@
 package com.github.johnmedlockdev.main.agents;
 
-public class User {
+abstract class User {
     protected final String symbol;
     protected double price;
 

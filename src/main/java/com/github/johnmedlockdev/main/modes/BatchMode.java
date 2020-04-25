@@ -1,11 +1,11 @@
 package com.github.johnmedlockdev.main.modes;
 
 import com.github.johnmedlockdev.main.database.Database;
-import com.github.johnmedlockdev.main.modes.interfaces.Mode;
+import com.github.johnmedlockdev.main.modes.interfaces.ModeInterface;
 
 import java.util.Scanner;
 
-public class BatchMode implements Mode {
+public class BatchMode implements ModeInterface {
 
     @Override
     public void gatherInput() {

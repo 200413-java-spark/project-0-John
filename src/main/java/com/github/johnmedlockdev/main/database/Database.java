@@ -125,7 +125,6 @@ public class Database {
         //      prepared statement assignment
         if (method.equals("insert")) {
             preparedStatement = p.getProperty("insertStatement");
-
         }
         if (method.equals("select")) {
             preparedStatement = p.getProperty("selectAll");
