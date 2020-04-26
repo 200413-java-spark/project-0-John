@@ -9,8 +9,6 @@
     <properties>
         <maven.compiler.source>1.8</maven.compiler.source>
         <maven.compiler.target>1.8</maven.compiler.target>
-        <exec.mainClass>com.github.johnmedlockdev.main.Main</exec.mainClass>
-        <exec.args>batch</exec.args>
     </properties>
 
     <dependencies>

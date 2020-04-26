@@ -19,6 +19,7 @@
 - strategy factory - reduces code factory object creation.
 - added user guidance prompts - program now prompts user with valid inputs.
 - Added Moving average Strategy - based off of user inputs for tickers it prompts market conditions.
+- created jUnit Test.
 
 ### Changed
 
@@ -36,6 +37,7 @@
 - storage file - removed now data is a dedicated storage space.
 - all test Strategies - removed placeholder data.
 - removed future.txt
+- properties files and configuration folder. Moved to raw strings for prepare statements. For Jar config.
 
 ## Version 1.0.0
 

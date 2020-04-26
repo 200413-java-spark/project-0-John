@@ -4,7 +4,6 @@ import com.github.johnmedlockdev.main.agents.FileStructure;
 
 import java.io.*;
 import java.sql.*;
-import java.util.Properties;
 
 public class Database {
     private final String symbol;
@@ -20,7 +19,8 @@ public class Database {
 // todo handle errors with logging
 
     private void logic(String function) {
-        if (function.equals("select")) {
+        if (function.equals("select") || function.equals("s")) {
+            function = "select";
             try {
                 getSql(function, symbol);
             } catch (IOException ioException) {
@@ -30,7 +30,8 @@ public class Database {
             } catch (ClassNotFoundException e) {
                 e.printStackTrace();
             }
-        } else if (function.equals("insert")) {
+        } else if (function.equals("insert") || function.equals("i")) {
+            function = "insert";
             try {
                 getSql(function, symbol);
             } catch (IOException ioException) {
@@ -70,17 +71,18 @@ public class Database {
         OutputStream outputStream = new FileOutputStream(path);
 
         while (rs.next()) {
+            if (rs.getString(2).equals(fileName)) {
+                String ticker = rs.getString(2);
+                double price = rs.getDouble(3);
+                String output = ticker + "," + price;
 
-            String ticker = rs.getString(2);
-            double price = rs.getDouble(3);
-            String output = ticker + "," + price;
-
-            BufferedWriter writer = new BufferedWriter(
-                    new FileWriter(fileSymbol.getAbsolutePathStr(), true)
-            );
-            writer.write(output);
-            writer.newLine();
-            writer.close();
+                BufferedWriter writer = new BufferedWriter(
+                        new FileWriter(fileSymbol.getAbsolutePathStr(), true)
+                );
+                writer.write(output);
+                writer.newLine();
+                writer.close();
+            }
         }
     }
 
@@ -101,15 +103,11 @@ public class Database {
     }
 
     private Connection connectToDatabase() throws IOException, SQLException {
-        String dbFile = "src/main/java/com/github/johnmedlockdev/main/configurations/db.properties";
-        FileReader reader = new FileReader(dbFile);
-        Properties p = new Properties();
-        p.load(reader);
 
         //      db connection setup
-        String username = p.getProperty("username");
-        String password = p.getProperty("password");
-        String url = p.getProperty("url");
+        String username = "mydb";
+        String password = "mydb";
+        String url = "jdbc:postgresql://3.17.207.114:5432/mydb";
 
         return DriverManager.getConnection(url, username, password);
 
@@ -117,17 +115,13 @@ public class Database {
 
     private String getStatement(String method) throws IOException {
         String preparedStatement = "";
-        String propertiesFile = "src/main/java/com/github/johnmedlockdev/main/configurations/statements.properties";
-        FileReader reader = new FileReader(propertiesFile);
-        Properties p = new Properties();
-        p.load(reader);
 
         //      prepared statement assignment
         if (method.equals("insert")) {
-            preparedStatement = p.getProperty("insertStatement");
+            preparedStatement = "insert into tickers (ticker, price) values (?,?)";
         }
         if (method.equals("select")) {
-            preparedStatement = p.getProperty("selectAll");
+            preparedStatement = "select * from tickers";
         }
 
         return preparedStatement;

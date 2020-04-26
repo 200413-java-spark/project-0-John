@@ -47,6 +47,7 @@ public class Init {
                 String[] input = {scanner.nextLine()};
                 new Init(input);
                 scanner.close();
+                ModeInterface.startOver();
         }
         if (mode == null) {
             System.exit(1);

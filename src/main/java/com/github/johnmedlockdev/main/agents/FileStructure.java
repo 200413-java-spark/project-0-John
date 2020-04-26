@@ -9,7 +9,7 @@ public class FileStructure extends User {
 
     public FileStructure(String symbol) {
         super(symbol);
-        absolutePathStr = new File("").getAbsolutePath() + "\\src\\main\\java\\com\\github\\johnmedlockdev\\main\\data\\" + super.getSymbol() + ".csv";
+        absolutePathStr = new File("") + super.getSymbol() + ".csv";
         path = new File(absolutePathStr);
     }
 
