@@ -4,7 +4,7 @@
     <modelVersion>4.0.0</modelVersion>
     <groupId>com.github.johnmedlockdev</groupId>
     <artifactId>trade-advisor</artifactId>
-    <version>1.0.1</version>
+    <version>1.0.2</version>
 
     <properties>
         <maven.compiler.source>1.8</maven.compiler.source>
@@ -24,11 +24,6 @@
             <version>42.2.12.jre7</version>
         </dependency>
 
-        <dependency>
-            <groupId>ch.qos.logback</groupId>
-            <artifactId>logback-classic</artifactId>
-            <version>1.0.13</version>
-        </dependency>
     </dependencies>
 
 </project>

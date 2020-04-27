@@ -10,11 +10,15 @@ import java.util.Scanner;
 
 public class Init {
 
-
     public Init(String[] args) {
+        if (args.length == 0) {
+            Scanner scanner = new Scanner(System.in);
+            System.out.println("Select Mode:");
+            System.out.println("Options: Manual : M || Batch : B || Generate : G || Advise : A || Exit : E");
+            String selection = scanner.nextLine();
+            modeFactory(selection);
+        }
         String selection = args[0];
-        System.out.println("Select Mode:");
-        System.out.println("Manual : M || Batch : B || Generate : G || Advise : A || Exit : E");
         modeFactory(selection);
     }
 

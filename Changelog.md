@@ -1,4 +1,11 @@
 # Changelog
+## Version 1.0.2
+
+### Added
+- added logging for error messages.
+
+### Changed
+- allows for no arg boot up
 
 ## Version 1.0.1
 
@@ -20,7 +27,6 @@
 - added user guidance prompts - program now prompts user with valid inputs.
 - Added Moving average Strategy - based off of user inputs for tickers it prompts market conditions.
 - created jUnit Test.
-- added logging for error messages.
 
 ### Changed
 

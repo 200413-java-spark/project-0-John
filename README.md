@@ -1,41 +1,39 @@
-# Trade Advisor 0.2.3
+# Trade Processor 1.0.2
 
-Algorithm based trade advisor. 
+An Algorithm Based Trade Processor With Moving Average Advisory. 
 
 This project is for educational and information purposes only. 
 
-Use at your own discretion.
+(Use at your own discretion.)
 
 ## Examples
 
-> new appl  25
+### Manual 
+- Allows the user to manually input data into a csv file.
 
-Creates new Csv with input
+### Batch 
 
-> add appl 50
-> add spy 13
+Allows the user to insert or select data from the database. 
+- insert - The insert function allows you to upload .csv data to the database. 
+- select - The select function generates a .csv file based of user specified ticker stored in database.
 
-Checks to see if csv exist it if doesn't it creates the file and adds the input.
+(You can also use i,s to enter either mode, respectively.)
 
-> Generate appl
-> Generate spy
+### Generate 
+- Generates placeholder data to a csv.
 
-Helper funciton for generating placeholder data. 200 entries.
+### Advise 
+- Processes the data based of user specified strategy on user specified Ticker Symbol from a .csv file.
 
-> predict spy
+### Exit 
+- Exits the terminal prompt.
 
-Processes the input based off the Ticker and allows the user to select from pre-defined strategies.
-
-> batch
-
-current: allows user to connect to database.
-future: user will be able to load cvs info and persist data to db.
-
-> exit
-
-exits the program loop.
+(You can also use M,B,G,A,E to enter each mode, respectively.)
 
 ## Usage
 
-> mvn clean compile exec:java
-> To run the file
+> [java -jar] [filepath/trade-advisor.jar] [args]
+
+OR
+
+> [java -jar] [filepath/trade-advisor.jar] 

@@ -42,22 +42,21 @@ public class Database {
     }
 
     private void getSql(String function, String fileName) throws IOException, SQLException, ClassNotFoundException {
-
         Connection conn = connectToDatabase();
 
 //      prepared statement setup
-        PreparedStatement statement = conn.prepareStatement(getStatement(function)); // input sql statement with ?
+        PreparedStatement statement = conn.prepareStatement(getStatement(function));
 
 //      Results set obj
         if (function.equals("select")) {
             ResultSet rs = statement.executeQuery();
             readData(rs, fileName);
-            rs.close(); // close connection
+            rs.close();
         } else {
             writeData(statement, fileName);
         }
-        statement.close(); // close connection
-        conn.close(); // close connection
+        statement.close();
+        conn.close();
     }
 
     private void readData(ResultSet rs, String fileName) throws SQLException, IOException {
@@ -82,7 +81,6 @@ public class Database {
     }
 
     private void writeData(PreparedStatement statement, String fileName) throws SQLException, IOException {
-        // for reading
         path = new File(fileSymbol.getAbsolutePathStr());
 
         BufferedReader br = new BufferedReader(new FileReader(fileSymbol.getAbsolutePathStr()));
