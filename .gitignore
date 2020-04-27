@@ -45,6 +45,7 @@ cmake-build-*/
 # Mongo Explorer plugin
 .idea/**/mongoSettings.xml
 
+
 # File-based project format
 *.iws
 
@@ -89,7 +90,7 @@ fabric.properties
 # Markdown Navigator plugin
 .idea/**/markdown-navigator.xml
 .idea/**/markdown-navigator/
-*.csv
+
 ### Java ###
 # Compiled class file
 *.class
@@ -129,3 +130,5 @@ buildNumber.properties
 .flattened-pom.xml
 
 # End of https://www.gitignore.io/api/java,maven,intellij
+*.txt
+*.csv

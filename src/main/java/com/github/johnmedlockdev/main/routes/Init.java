@@ -13,7 +13,8 @@ public class Init {
 
     public Init(String[] args) {
         String selection = args[0];
-        System.out.println("Select Mode: Manual : M || Batch : B || Generate : G || Advise : A || Exit : E");
+        System.out.println("Select Mode:");
+        System.out.println("Manual : M || Batch : B || Generate : G || Advise : A || Exit : E");
         modeFactory(selection);
     }
 

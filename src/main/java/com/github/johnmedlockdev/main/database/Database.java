@@ -1,6 +1,7 @@
 package com.github.johnmedlockdev.main.database;
 
 import com.github.johnmedlockdev.main.agents.FileStructure;
+import com.github.johnmedlockdev.main.logs.Logger;
 
 import java.io.*;
 import java.sql.*;
@@ -16,30 +17,24 @@ public class Database {
         logic(function); // select || insert
     }
 
-// todo handle errors with logging
-
     private void logic(String function) {
         if (function.equals("select") || function.equals("s")) {
             function = "select";
             try {
                 getSql(function, symbol);
-            } catch (IOException ioException) {
-                ioException.printStackTrace();
-            } catch (SQLException throwables) {
-                throwables.printStackTrace();
-            } catch (ClassNotFoundException e) {
-                e.printStackTrace();
+            } catch (IOException | SQLException | ClassNotFoundException ioException) {
+                Logger logger = new Logger();
+                Logger.setup();
+                logger.Log(1, ioException.toString());
             }
         } else if (function.equals("insert") || function.equals("i")) {
             function = "insert";
             try {
                 getSql(function, symbol);
-            } catch (IOException ioException) {
-                ioException.printStackTrace();
-            } catch (SQLException throwables) {
-                throwables.printStackTrace();
-            } catch (ClassNotFoundException e) {
-                e.printStackTrace();
+            } catch (IOException | SQLException | ClassNotFoundException ioException) {
+                Logger logger = new Logger();
+                Logger.setup();
+                logger.Log(1, ioException.toString());
             }
         } else {
             System.out.println("Invalid function Exiting batch mode.");

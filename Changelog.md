@@ -20,6 +20,7 @@
 - added user guidance prompts - program now prompts user with valid inputs.
 - Added Moving average Strategy - based off of user inputs for tickers it prompts market conditions.
 - created jUnit Test.
+- added logging for error messages.
 
 ### Changed
 
