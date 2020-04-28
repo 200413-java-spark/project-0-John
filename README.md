@@ -1,4 +1,4 @@
-# Trade Processor 1.0.2
+# Trade Processor 1.0.3
 
 An Algorithm Based Trade Processor With Moving Average Advisory. 
 
@@ -17,7 +17,7 @@ Allows the user to insert or select data from the database.
 - insert - The insert function allows you to upload .csv data to the database. 
 - select - The select function generates a .csv file based of user specified ticker stored in database.
 
-(You can also use i,s to enter either mode, respectively.)
+(You can also use I,S to enter either mode, respectively.)
 
 ### Generate 
 - Generates placeholder data to a csv.

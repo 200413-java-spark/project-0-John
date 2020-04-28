@@ -12,12 +12,13 @@ public class Database {
     private File path;
 
     public Database(String function, String symbol) {
-        this.symbol = symbol;
+        this.symbol = symbol.toUpperCase();
         this.fileSymbol = new FileStructure(symbol);
-        logic(function); // select || insert
+        logic(function.toLowerCase()); // select || insert
     }
 
     private void logic(String function) {
+
         if (function.equals("select") || function.equals("s")) {
             function = "select";
             try {

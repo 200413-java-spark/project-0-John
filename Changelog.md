@@ -1,4 +1,9 @@
 # Changelog
+## Version 1.0.3
+
+### Changed
+- parses inputs for batch to select without upper or lowercase matches.
+
 ## Version 1.0.2
 
 ### Added
