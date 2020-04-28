@@ -33,9 +33,9 @@ public class MovingAverage extends Strategy {
         System.out.println("=========================");
 
         if (lastPrice > averagePrice) {
-            System.out.printf("You are in a Bull market. The last input of $%s is higher than the $%s.", lastPrice, averagePrice);
+            System.out.printf("You are in a Bull market. The last input of $%s is higher than the $%s.\n", lastPrice, averagePrice);
         } else {
-            System.out.printf("You are in a bear market. The last input of $%s is lower than the $%s.", lastPrice, averagePrice);
+            System.out.printf("You are in a bear market. The last input of $%s is lower than the $%s.\n", lastPrice, averagePrice);
         }
     }
 }

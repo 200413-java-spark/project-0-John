@@ -7,6 +7,11 @@
 - Tgeneration mode.
 - ThreadWorker agent
 
+### Changed
+- optimized Tgeneration & Generation
+- now files properly close
+- advise MA strategy now breaks appropriately.
+
 ## Version 1.0.3
 
 ### Changed
