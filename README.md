@@ -35,7 +35,7 @@ Allows the user to insert or select data from the database.
 
 ## Usage
 
-> [java -jar] [filepath/trade-advisor.jar] [args]
+> [java -jar] [filepath/trade-advisor.jar] [arg]
 
 OR
 
