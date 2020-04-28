@@ -11,7 +11,7 @@ public class Init {
         if (args.length == 0) {
             Scanner scanner = new Scanner(System.in);
             System.out.println("Select Mode:");
-            System.out.println("Options: Manual : M || Batch : B || Generate : G || Advise : A || Exit : E");
+            System.out.println("Options: Manual : M || Batch : B || Generate : G || Tgenerate : T || Advise : A || Exit : E");
             String selection = scanner.nextLine();
             modeFactory(selection);
         }
