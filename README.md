@@ -6,7 +6,7 @@ This project is for educational and information purposes only.
 
 (Use at your own discretion.)
 
-## Examples
+## Modes
 
 ### Manual 
 - Allows the user to manually input data into a csv file.
