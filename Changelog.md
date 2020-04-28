@@ -1,4 +1,12 @@
 # Changelog
+
+## Version 1.0.4
+
+### Added
+- now supports concurrency in Tgeneration mode.
+- Tgeneration mode.
+- ThreadWorker agent
+
 ## Version 1.0.3
 
 ### Changed

@@ -1,9 +1,6 @@
 package com.github.johnmedlockdev.main.routes;
 
-import com.github.johnmedlockdev.main.modes.AdviseMode;
-import com.github.johnmedlockdev.main.modes.BatchMode;
-import com.github.johnmedlockdev.main.modes.GenerateMode;
-import com.github.johnmedlockdev.main.modes.ManualMode;
+import com.github.johnmedlockdev.main.modes.*;
 import com.github.johnmedlockdev.main.modes.interfaces.ModeInterface;
 
 import java.util.Scanner;
@@ -42,6 +39,10 @@ public class Init {
             case "G":
                 mode = new GenerateMode();
                 break;
+            case "Tgenerate":
+            case "T":
+                mode = new TgenerateMode();
+                break;
             case "Advise":
             case "A":
                 mode = new AdviseMode();
@@ -61,7 +62,7 @@ public class Init {
     }
 
     private String capitalizeInput(String input) {
-        input = input.substring(0, 1).toUpperCase() + input.substring(1);
+        input = input.substring(0, 1).toUpperCase() + input.substring(1).toLowerCase();
         return input;
     }
 }

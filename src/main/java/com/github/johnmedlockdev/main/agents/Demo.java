@@ -38,4 +38,12 @@ public class Demo {
         }
 
     }
+
+    public void tGenerate() {
+        String[] values = symbol.split(",");
+        for (String value : values) {
+            new Thread(new ThreadWorker(value, numberOfInputs)).start();
+        }
+
+    }
 }

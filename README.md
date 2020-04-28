@@ -1,4 +1,4 @@
-# Trade Processor 1.0.3
+# Trade Processor 1.0.4
 
 An Algorithm Based Trade Processor With Moving Average Advisory. 
 
@@ -21,6 +21,9 @@ Allows the user to insert or select data from the database.
 
 ### Generate 
 - Generates placeholder data to a csv.
+
+### TGenerate 
+- Generates placeholder data to a csv with multithreading.
 
 ### Advise 
 - Processes the data based of user specified strategy on user specified Ticker Symbol from a .csv file.
