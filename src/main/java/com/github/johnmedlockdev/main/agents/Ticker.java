@@ -1,5 +1,7 @@
 package com.github.johnmedlockdev.main.agents;
 
+import com.github.johnmedlockdev.main.logs.Logger;
+
 import java.io.*;
 
 public class Ticker extends User {
@@ -17,23 +19,22 @@ public class Ticker extends User {
             }
             createInput();
         } catch (IOException e) {
-            System.out.println("createFile error!");
+            Logger logger = new Logger();
+            Logger.setup();
+            logger.Log(1, e.toString());
         }
     }
 
     public void createInput() {
-        try {
+        try (BufferedWriter bw = new BufferedWriter(new FileWriter(fileSymbol.getAbsolutePathStr(), true))) {
             String priceInput = Double.toString(this.price);
             String newUserInput = super.getSymbol() + "," + priceInput;
-
-            BufferedWriter bw = new BufferedWriter(
-                    new FileWriter(fileSymbol.getAbsolutePathStr(), true)
-            );
             bw.write(newUserInput);
             bw.newLine();
-            bw.close();
         } catch (IOException e) {
-            System.out.println("createInput error!");
+            Logger logger = new Logger();
+            Logger.setup();
+            logger.Log(1, e.toString());
         }
     }
 

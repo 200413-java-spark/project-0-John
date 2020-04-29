@@ -6,11 +6,13 @@
 - now supports concurrency in Tgeneration mode.
 - Tgeneration mode.
 - ThreadWorker agent
+- added logging to manual file creation
 
 ### Changed
 - optimized Tgeneration & Generation
 - now files properly close
 - advise MA strategy now breaks appropriately.
+- the manual mode now closes properly
 
 ## Version 1.0.3
 
