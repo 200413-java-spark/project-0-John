@@ -3,68 +3,71 @@
 ## Version 1.0.4
 
 ### Added
-- now supports concurrency in Tgeneration mode.
-- Tgeneration mode.
-- ThreadWorker agent
-- added logging to manual file creation
+- Now Supports Concurrency In Tgeneration Mode.
+- Tgeneration Mode.
+- Threadworker Agent
+- Added Logging To Manual File Creation
+- Added Some Formating To The Menus
 
 ### Changed
-- optimized Tgeneration & Generation
-- now files properly close
-- advise MA strategy now breaks appropriately.
-- the manual mode now closes properly
+- Optimized Tgeneration & Generation
+- Now Files Properly Close
+- Advise Ma Strategy Now Breaks Appropriately.
+- Now The Manual, Generate, Tgenerate, And Batch Modes Closes Streams Properly
 
+### Removed
+- Createfile Function And Moved Logic Into Create Input.
 ## Version 1.0.3
 
 ### Changed
-- parses inputs for batch to select without upper or lowercase matches.
+- Parses Inputs For Batch To Select Without Upper Or Lowercase Matches.
 
 ## Version 1.0.2
 
 ### Added
-- added logging for error messages.
+- Added Logging For Error Messages.
 
 ### Changed
-- allows for no arg boot up
+- Allows For No Arg Boot Up
 
 ## Version 1.0.1
 
 ### Added
 
-- init class - init object.
-- modeInterface - blueprint for all modes.
-- StrategyInterface - blueprint for all strategies.
-- BatchMode class - allows for user to update and download data to csv.
-- GenerateMode class - generates user determined number of inputs of specified ticker.
-- ManualMode class - manual inputs ticker inputs.
-- AdviseMode class - advises based of specified strategy.
-- Demo class - agent for generate mode.
-- FileStructure class - agent for file creation.
-- Ticker class - agent for ticker info.
-- User class - abstract for filestructure and ticker agents.
-- mode factory - reduces code mode object creation.
-- strategy factory - reduces code factory object creation.
-- added user guidance prompts - program now prompts user with valid inputs.
-- Added Moving average Strategy - based off of user inputs for tickers it prompts market conditions.
-- created jUnit Test.
+- Init Class - Init Object.
+- Modeinterface - Blueprint For All Modes.
+- Strategyinterface - Blueprint For All Strategies.
+- Batchmode Class - Allows For User To Update And Download Data To Csv.
+- Generatemode Class - Generates User Determined Number Of Inputs Of Specified Ticker.
+- Manualmode Class - Manual Inputs Ticker Inputs.
+- Advisemode Class - Advises Based Of Specified Strategy.
+- Demo Class - Agent For Generate Mode.
+- Filestructure Class - Agent For File Creation.
+- Ticker Class - Agent For Ticker Info.
+- User Class - Abstract For Filestructure And Ticker Agents.
+- Mode Factory - Reduces Code Mode Object Creation.
+- Strategy Factory - Reduces Code Factory Object Creation.
+- Added User Guidance Prompts - Program Now Prompts User With Valid Inputs.
+- Added Moving Average Strategy - Based Off Of User Inputs For Tickers It Prompts Market Conditions.
+- Created Junit Test.
 
 ### Changed
 
-- refactored cli flags into modes for batch, generate, manual, and prediction.
-- refactored strategies to use collections api.
-- data file now just stores csv files.
-- moved properties files to configurations folder.
-- created a loop for inputs until user exits the program.
+- Refactored Cli Flags Into Modes For Batch, Generate, Manual, And Prediction.
+- Refactored Strategies To Use Collections Api.
+- Data File Now Just Stores Csv Files.
+- Moved Properties Files To Configurations Folder.
+- Created A Loop For Inputs Until User Exits The Program.
 
 ### Removed
 
-- data class - broke up in multiple classes
-- parseInput class - used factory instead 
-- fileInfo class - replaced by fileStructure agent
-- storage file - removed now data is a dedicated storage space.
-- all test Strategies - removed placeholder data.
-- removed future.txt
-- properties files and configuration folder. Moved to raw strings for prepare statements. For Jar config.
+- Data Class - Broke Up In Multiple Classes
+- Parseinput Class - Used Factory Instead 
+- Fileinfo Class - Replaced By Filestructure Agent
+- Storage File - Removed Now Data Is A Dedicated Storage Space.
+- All Test Strategies - Removed Placeholder Data.
+- Removed Future.txt
+- Properties Files And Configuration Folder. Moved To Raw Strings For Prepare Statements. For Jar Config.
 
 ## Version 1.0.0
 
@@ -72,123 +75,123 @@
 
 ### Changed
 
-- batch insert now works properly
-- batch select now generates a file with the output
-- all user methods now conform to the database inputs.
+- Batch Insert Now Works Properly
+- Batch Select Now Generates A File With The Output
+- All User Methods Now Conform To The Database Inputs.
 
 ## Version 0.2.4
 
 ### Added
 
-- batch mode read and writes without crashing.
-- separated queries from db properties.
-- added logic gate for database object. 
+- Batch Mode Read And Writes Without Crashing.
+- Separated Queries From Db Properties.
+- Added Logic Gate For Database Object. 
 
 ### Changed
 
-- broke getSQL() in to multiple parts
-- inputs in pom file.
+- Broke Getsql() In To Multiple Parts
+- Inputs In Pom File.
 
 ## Version 0.2.3
 
 ### Added
 
-- program now connects to postgres database
-- batch input option
-- loop added for process to take more actions.
+- Program Now Connects To Postgres Database
+- Batch Input Option
+- Loop Added For Process To Take More Actions.
 
 ### Changed
 
-- inputs in pom file.
+- Inputs In Pom File.
 
 ## Version 0.2.2
 
 ### Added
 
-- future.txt file for a pipeline.
-- Implemented test for the Data obj.
+- Future.txt File For A Pipeline.
+- Implemented Test For The Data Obj.
 
 ### Changed
 
-- try catch blocks for IO functions 
-- ParseInput now implements a batch function.
-- cleaned up data switch in main func.
+- Try Catch Blocks For Io Functions 
+- Parseinput Now Implements A Batch Function.
+- Cleaned Up Data Switch In Main Func.
 
 ## Version 0.2.1
 
 ### Changed
-- fixed file writer bugs with adding a space before operation. 
-- new input now checks if the user already created a file. if the file does exist it just adds to the file.
+- Fixed File Writer Bugs With Adding A Space Before Operation. 
+- New Input Now Checks If The User Already Created A File. If The File Does Exist It Just Adds To The File.
 
 ## Version 0.2.0
 
 ### Changed
-- created factory for more than one strategy.
-- reduced number of inputs needed in order to generate and predict.
-- added file creation functionality to generate command.
+- Created Factory For More Than One Strategy.
+- Reduced Number Of Inputs Needed In Order To Generate And Predict.
+- Added File Creation Functionality To Generate Command.
 
 ### Removed
-- scripts folder and run scripts
-- removed exec dependency from pom file.
+- Scripts Folder And Run Scripts
+- Removed Exec Dependency From Pom File.
 
 ## Version 0.1.2
 
-.### Added
-- created class FileInfo to abstract away the file creation from main method.
-- created class ParseInput to abstract away the parsing from main method.
-- created an interface for strategies 
-- created abstract parent class for strategies.
+### Added
+- Created Class Fileinfo To Abstract Away The File Creation From Main Method.
+- Created Class Parseinput To Abstract Away The Parsing From Main Method.
+- Created An Interface For Strategies 
+- Created Abstract Parent Class For Strategies.
 
 ### Changed
-- modified main method to reflect changes made in FileInfo, ParseInput, and simplified control flow.
-- refactored Data class 
-- refactored getprediction method. Will be refactored further.
+- Modified Main Method To Reflect Changes Made In Fileinfo, Parseinput, And Simplified Control Flow.
+- Refactored Data Class 
+- Refactored Getprediction Method. Will Be Refactored Further.
 
 ## Version 0.1.1
 
 ### Changed
 
-- Changed to JDK 8
+- Changed To Jdk 8
 
 ## Version 0.1.0
 
 ### Added
 
-- Placeholder data generation: input generate followed by ticker, and it generates 200 data points.
-- Control flow for file generation.
+- Placeholder Data Generation: Input Generate Followed By Ticker, And It Generates 200 Data Points.
+- Control Flow For File Generation.
 
 ### Changed
 
-getPrediction(): refactored code to be less loopy.
+- Getprediction(): Refactored Code To Be Less Loopy.
 
 ## Version 0.0.2
 
 ### Added
 
-- added getPrediction: It gives you a buy or sell signal based off the data in the csv file. According to the market conditions you fed it.
+- Added Getprediction: It Gives You A Buy Or Sell Signal Based Off The Data In The Csv File. According To The Market Conditions You Fed It.
 
 ### Changed
 
-- run.sh consolidated scripts to single file
-- pom.xml changed to reflect version changes.
+- Run.sh Consolidated Scripts To Single File
+- Pom.xml Changed To Reflect Version Changes.
 
 ### Removed
 
-- build.sh
-- clean.sh
+- Build.sh
+- Clean.sh
 
 ## Version 0.0.1
 
 ### Added
 
-- Add a feature for file name creation based on ticker input.
-- created scripts: build, clean, run (sh) to speed up development
-- Setup initial Maven environment
+- Add A Feature For File Name Creation Based On Ticker Input.
+- Created Scripts: Build, Clean, Run (Sh) To Speed Up Development
+- Setup Initial Maven Environment
 
 ### Changed
 
-- moved build, clean, run (sh) to scripts directory
+- Moved Build, Clean, Run (Sh) To Scripts Directory
 
 ### Removed
 
-- simple json dependency from pom file.
+- Simple Json Dependency From Pom File.

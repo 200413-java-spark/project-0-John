@@ -12,13 +12,14 @@ public class AdviseMode implements ModeInterface {
     public void gatherInput() {
         Scanner scanner = new Scanner(System.in);
 
-        System.out.println("What symbol?");
+        System.out.println("\nWhat symbol?\n");
         String symbol = scanner.nextLine().toUpperCase();
 
-        System.out.println("What Strategy?");
+        System.out.println("\nWhat Strategy?\n");
         String indicator = scanner.nextLine().toUpperCase();
 
         strategyFactory(symbol, indicator);
+        scanner.close();
     }
 
     public void strategyFactory(String symbol, String indicator) {
@@ -30,7 +31,7 @@ public class AdviseMode implements ModeInterface {
                 strategy = new MovingAverage(symbol);
                 break;
             default:
-                System.out.printf("This Program doesn't currently support indicator=%s", indicator);
+                System.out.printf("\nThis Program doesn't currently support indicator=%s\n", indicator);
         }
         assert strategy != null;
         strategy.advise();

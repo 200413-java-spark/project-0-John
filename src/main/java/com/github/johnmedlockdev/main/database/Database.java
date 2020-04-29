@@ -38,7 +38,7 @@ public class Database {
                 logger.Log(1, ioException.toString());
             }
         } else {
-            System.out.println("Invalid function Exiting batch mode.");
+            System.out.println("\nInvalid function Exiting batch mode.\n");
         }
     }
 
@@ -79,6 +79,8 @@ public class Database {
                 writer.close();
             }
         }
+        outputStream.close();
+
     }
 
     private void writeData(PreparedStatement statement, String fileName) throws SQLException, IOException {
@@ -94,6 +96,7 @@ public class Database {
         }
 
         statement.executeBatch();
+        br.close();
     }
 
     private Connection connectToDatabase() throws IOException, SQLException {

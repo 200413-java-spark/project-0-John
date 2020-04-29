@@ -12,11 +12,11 @@ public class TgenerateMode extends GenerateMode {
 
         Scanner scanner = new Scanner(System.in);
 
-        System.out.println("What are the Tickers?");
-        System.out.println("ticker,ticker,ticker");
+        System.out.println("\nWhat are the Tickers?\n");
+        System.out.println("Format: ticker,ticker,ticker\n");
         String symbol = scanner.nextLine();
 
-        System.out.println("How Many Inputs?");
+        System.out.println("\nHow Many Inputs?\n");
         String numberOfInputs = scanner.nextLine();
 
         new Demo(symbol, numberOfInputs).tGenerate();

@@ -10,8 +10,8 @@ public class Init {
     public Init(String[] args) {
         if (args.length == 0) {
             Scanner scanner = new Scanner(System.in);
-            System.out.println("Select Mode:");
-            System.out.println("Options: Manual : M || Batch : B || Generate : G || Tgenerate : T || Advise : A || Exit : E");
+            System.out.println("\nSelect Mode\n");
+            System.out.println("Manual : M || Batch : B || Generate : G || Tgenerate : T || Advise : A || Exit : E\n");
             String selection = scanner.nextLine();
             modeFactory(selection);
         }
@@ -23,7 +23,7 @@ public class Init {
         ModeInterface mode = null;
         selection = capitalizeInput(selection);
         if (selection.equals("Exit") || selection.equals("E")) {
-            System.out.println("Exiting Program");
+            System.out.println("\nExiting Program");
             System.exit(1);
         }
         switch (selection) {
@@ -49,7 +49,7 @@ public class Init {
                 break;
             default:
                 Scanner scanner = new Scanner(System.in);
-                System.out.println("Invalid input! Select a valid mode.");
+                System.out.println("\nInvalid input! Select a valid mode.");
                 String[] input = {scanner.nextLine()};
                 new Init(input);
                 scanner.close();

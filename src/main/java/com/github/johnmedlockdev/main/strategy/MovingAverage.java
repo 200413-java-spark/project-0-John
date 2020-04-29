@@ -26,11 +26,11 @@ public class MovingAverage extends Strategy {
         sum = (int) (sum * 100) / 100.0;
         averagePrice = (int) (averagePrice * 100) / 100.0;
 
-        System.out.println("Input Sum: " + sum);
-        System.out.println("Input Count: " + count);
-        System.out.println("Average Price: $" + averagePrice);
-        System.out.println("Last Price: $" + lastPrice);
-        System.out.println("=========================");
+        System.out.println("\nInput Sum: " + sum);
+        System.out.println("\nInput Count: " + count);
+        System.out.println("\nAverage Price: $" + averagePrice);
+        System.out.println("\nLast Price: $" + lastPrice);
+        System.out.println("\n=========================\n");
 
         if (lastPrice > averagePrice) {
             System.out.printf("You are in a Bull market. The last input of $%s is higher than the $%s.\n", lastPrice, averagePrice);

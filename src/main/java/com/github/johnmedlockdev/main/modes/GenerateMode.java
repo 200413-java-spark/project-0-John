@@ -12,10 +12,10 @@ public class GenerateMode implements ModeInterface {
 
         Scanner scanner = new Scanner(System.in);
 
-        System.out.println("What is the Ticker?");
+        System.out.println("\nWhat is the Ticker?\n");
         String symbol = scanner.nextLine();
 
-        System.out.println("How Many Inputs?");
+        System.out.println("\nHow Many Inputs?\n");
         String numberOfInputs = scanner.nextLine();
 
         new Demo(symbol, numberOfInputs).generate();
