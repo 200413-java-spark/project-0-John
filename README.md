@@ -78,3 +78,15 @@ Allows The User To Insert Or Select Data From The Database.
 - Exits The Terminal Prompt.
 
 (You Can Also Use M,B,G,T,A, Or E To Utilize Each Mode, Respectively.)
+
+### Architecture:
+**Business Logic Layer:**
+- Java
+
+**Data Access Layer:**
+- PostgreSQL
+
+**Build Tools:**
+- Maven
+- Docker
+- JUnit
