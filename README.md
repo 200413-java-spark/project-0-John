@@ -13,17 +13,17 @@
 
 ### Postgres
 
-```bash
+```Bash
 docker build -t mydb -f src/main/resources/Dockerfile
 docker run --name mydb -d --rm -p 5432:5432 mydb
 ```
 
-OR
+||
 
-```bash
-./src/main/resources/builddocker.sh
-./src/main/resources/rundocker.sh
-./src/main/resources/login.sh
+```Bash
+./builddocker.sh
+./rundocker.sh
+./login.sh
 ```
 
 ## Usage
