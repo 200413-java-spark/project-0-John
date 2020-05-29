@@ -85,6 +85,7 @@ Allows The User To Insert Or Select Data From The Database.
 
 **Data Access Layer:**
 - PostgreSQL
+- JDBC
 
 **Build Tools:**
 - Maven
