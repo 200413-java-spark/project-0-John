@@ -3,6 +3,7 @@
 ***An Algorithm Based Trade Processor With Moving Average Advisory.***
 
 ***This Project Is For Educational And Information Purposes Only.***
+
 (Use At Your Own Discretion.)
 
 ## Build
