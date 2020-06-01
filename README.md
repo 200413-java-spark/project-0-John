@@ -79,7 +79,7 @@ Allows The User To Insert Or Select Data From The Database.
 
 (You Can Also Use M,B,G,T,A, Or E To Utilize Each Mode, Respectively.)
 
-### Architecture:
+### Tech Stack:
 **Business Logic Layer:**
 - Java
 
