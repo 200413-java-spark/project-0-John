@@ -80,10 +80,10 @@ Allows The User To Insert Or Select Data From The Database.
 (You Can Also Use M,B,G,T,A, Or E To Utilize Each Mode, Respectively.)
 
 ### Tech Stack:
-**Business Logic Layer:**
+**Business Layer:**
 - Java
 
-**Data Access Layer:**
+**Data Layer:**
 - PostgreSQL
 - JDBC
 
